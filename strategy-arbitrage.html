@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold Spot–Futures Arbitrage Strategy — Capital Flow Algo</title>
+<meta name="description" content="How Capital Flow Algo's market-neutral gold spot–futures arbitrage strategy works: buy gold spot, sell gold futures, capture the basis. 5–8% historical monthly returns with hedged, direction-agnostic positioning.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-strategy="arbitrage">
+<header id="site-header"></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="strategies.html">Strategies</a> / Gold Spot–Futures Arbitrage</div>
+    <span class="tag green mb-2">Market neutral · Live</span>
+    <h1>Gold Spot–Futures Arbitrage</h1>
+    <p class="lead">A fully automated, hedged strategy that earns the price difference between gold's spot price and its futures contract. It doesn't need the market to go up. It doesn't need the market to go down. It needs the gap — and the gap is almost always there.</p>
+    <div class="hero-actions mt-3">
+      <a class="btn btn-primary" data-href="call" href="#" target="_blank" rel="noopener">Discuss this strategy</a>
+      <a class="btn btn-outline" href="calculator.html?s=arbitrage">Run the numbers</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="metrics reveal">
+      <div class="metric"><span>Historical range</span><b class="gold">5 – 8% / mo</b></div>
+      <div class="metric"><span>Average month</span><b class="gold" id="sAvg">—</b></div>
+      <div class="metric"><span>Best / worst month</span><b><span id="sBest">—</span> <span class="muted" style="font-size:1rem">/</span> <span id="sWorst">—</span></b></div>
+      <div class="metric"><span>Positive months</span><b class="green" id="sPos">—</b></div>
+    </div>
+    <div class="notice" id="illustrativeBanner" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+      <span><strong>Illustrative data.</strong> The monthly figures below are representative of the strategy's historical range and will be replaced with verified live-account figures. Ask us for the verified statement.</span>
+    </div>
+    <div class="chart-card reveal">
+      <div class="chart-head"><h3>Monthly returns</h3><span class="small muted">Net of costs · as of <span id="sAsOf">—</span></span></div>
+      <div class="chart-box"><canvas id="stratChart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Two legs, one locked-in spread.</h2>
+      <p class="mt-2">Gold futures usually trade at a premium to the spot price — the "basis" — because of storage, financing costs and demand for leverage. As the contract approaches expiry that premium shrinks toward zero. The algorithm captures that convergence, automatically, again and again.</p>
+      <ul class="checks">
+        <li><strong>Leg 1 — Buy gold spot.</strong> The algorithm buys gold (XAU/USD) at the current spot price.</li>
+        <li><strong>Leg 2 — Sell gold futures.</strong> At the same moment it sells an equal amount of the gold futures contract at the higher price.</li>
+        <li><strong>Hold to convergence.</strong> Whether gold rises or falls, gains on one leg offset losses on the other. The locked-in spread is the profit.</li>
+        <li><strong>Rotate.</strong> Positions are closed at convergence and re-opened where the basis is widest, continuously.</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <div class="terminal">
+        <div class="terminal-bar"><i></i><i></i><i></i><span>EXAMPLE TRADE · GOLD (XAU/USD)</span></div>
+        <div class="terminal-body">
+          <div class="term-row"><span class="k">Buy gold spot</span><span class="v">$2,412.10 / oz</span></div>
+          <div class="term-row"><span class="k">Sell gold futures</span><span class="v">$2,447.30 / oz</span></div>
+          <div class="term-row"><span class="k">Basis captured</span><span class="v gold">+1.46%</span></div>
+          <div class="term-row"><span class="k">Gold drops 5%</span><span class="v">Spot −$120.60 · Futures +$122.40</span></div>
+          <div class="term-row"><span class="k">Net at convergence</span><span class="v green">+$35.20 / oz locked in</span></div>
+        </div>
+      </div>
+      <p class="small muted mt-2">Simplified illustration. Actual returns depend on basis levels, funding rates, fees and capital deployed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Strategy profile</span>
+      <h2>Key facts</h2>
+    </div>
+    <div class="grid grid-2 reveal">
+      <div class="spec">
+        <div><span>Style</span><span>Cash-and-carry / basis arbitrage</span></div>
+        <div><span>Market</span><span>Gold (XAU/USD) spot &amp; gold futures</span></div>
+        <div><span>Direction</span><span>Market neutral — fully hedged</span></div>
+        <div><span>Historical monthly return</span><span>5 – 8% (net)</span></div>
+        <div><span>Typical holding period</span><span>Days to weeks, to convergence</span></div>
+        <div><span>Leverage</span><span>Low — used only to balance the two legs</span></div>
+      </div>
+      <div class="spec">
+        <div><span>Minimum capital</span><span data-cfg="minimum.arbitrage">$1,000</span></div>
+        <div><span>Custody</span><span>Your own account with <span data-cfg="broker.name">a regulated MT5 broker</span></span></div>
+        <div><span>Reporting</span><span>Live in MT5</span></div>
+        <div><span>Withdrawals</span><span>Anytime (open positions closed at convergence)</span></div>
+        <div><span>Suitable for</span><span>Capital preservation, yield seekers, treasury</span></div>
+        <div><span>Main risks</span><span>Basis compression, broker/counterparty, execution</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow">Check it yourself</span><h2>Watch this strategy trade, live.</h2><p class="mt-2">Read-only MT5 login for our own live account running this strategy. Open the free MT5 app, log in, and see every trade in real time.</p></div>
+    <div data-mt5-accounts="arbitrage" class="reveal"></div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Honest about risk</span>
+      <h2>What can go wrong</h2>
+    </div>
+    <div class="grid grid-3 reveal">
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/></svg></div><h3>Basis compression</h3><p>When gold is calm or financing costs fall, the spot–futures gap can shrink, reducing returns toward the low end of the range — or below it — for a period.</p></div>
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg></div><h3>Counterparty risk</h3><p>Positions rely on the broker honouring both legs. We use established, regulated brokers only, but that risk never reaches zero.</p></div>
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div><h3>Execution &amp; liquidity</h3><p>Both legs must fill together. In extreme volatility, slippage between the legs can eat into a trade's expected spread.</p></div>
+    </div>
+    <p class="small muted mt-3">Full details in our <a href="risk-disclosure.html" class="gold">Risk Disclosure</a>. Past performance is not a reliable indicator of future results.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>See the arbitrage strategy live</h2>
+      <p>We'll show you a live account, walk through recent trades and answer every question before you commit anything.</p>
+      <div class="actions">
+        <a class="btn btn-primary" data-href="call" href="#" target="_blank" rel="noopener">Book a Free Consultation</a>
+        <a class="btn btn-outline" href="strategy-forex.html">Compare: Forex Algo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/performance-data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

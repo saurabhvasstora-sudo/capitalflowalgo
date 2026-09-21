@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trading Strategies — Capital Flow Algo</title>
+<meta name="description" content="Compare Capital Flow Algo's live strategies: market-neutral gold spot–futures arbitrage (5–8% monthly historical) and the forex multi-pair algorithm (15–20% monthly historical). Plus our research pipeline.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Strategies</div>
+    <span class="eyebrow">Our strategies</span>
+    <h1>Two live algorithms. Choose your profile — or combine both.</h1>
+    <p class="lead">Every strategy on this page has been run on Capital Flow Algo's own capital before being offered to clients, and every one of them executes inside <em>your</em> own broker account, visible live in MT5.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid-2">
+      <article class="card card-strategy reveal">
+        <div class="top">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17l6-6 4 4 6-6"/><path d="M14 9h6v6"/></svg></div>
+          <span class="tag green">Market neutral · Live</span>
+        </div>
+        <h3>Gold Spot–Futures Arbitrage</h3>
+        <div class="ret">5 – 8% <small>/ month · historical</small></div>
+        <p>Buys gold in the spot market and simultaneously sells the gold futures contract, locking in the price difference ("basis"). Because the two legs hedge each other, the strategy does not depend on the market going up or down.</p>
+        <ul>
+          <li>Hedged — no directional exposure</li>
+          <li>Consistent, lower-volatility monthly accrual</li>
+          <li>Ideal for capital preservation with yield</li>
+          <li>Minimum capital: <strong data-cfg="minimum.arbitrage">$1,000</strong></li>
+        </ul>
+        <a class="btn btn-primary btn-sm" href="strategy-arbitrage.html">Full strategy breakdown →</a>
+      </article>
+
+      <article class="card card-strategy blue reveal">
+        <div class="top">
+          <div class="icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div>
+          <span class="tag blue">Growth · Live</span>
+        </div>
+        <h3>Forex Multi-Pair Algo</h3>
+        <div class="ret">15 – 20% <small>/ month · historical</small></div>
+        <p>A systematic model trading a diversified basket of major and minor currency pairs around the clock, five days a week. Entries, exits, position sizing and risk limits are all rule-based — no human emotion.</p>
+        <ul>
+          <li>Diversified across multiple currency pairs</li>
+          <li>Hard per-trade and daily drawdown limits</li>
+          <li>Higher return target with active risk control</li>
+          <li>Minimum capital: <strong data-cfg="minimum.forex">$1,000</strong></li>
+        </ul>
+        <a class="btn btn-primary btn-sm" href="strategy-forex.html">Full strategy breakdown →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Side by side</span>
+      <h2>Which one is right for you?</h2>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th></th><th>Gold Spot–Futures Arbitrage</th><th>Forex Multi-Pair Algo</th></tr></thead>
+        <tbody>
+          <tr><td>Historical monthly return</td><td class="pos">5 – 8%</td><td class="pos">15 – 20%</td></tr>
+          <tr><td>Risk profile</td><td>Low – market neutral</td><td>Moderate – directional, risk-limited</td></tr>
+          <tr><td>Market direction needed?</td><td>No</td><td>No — trades both long and short</td></tr>
+          <tr><td>Best for</td><td>Capital preservation with steady yield</td><td>Growth-focused investors</td></tr>
+          <tr><td>Market</td><td>Gold (XAU/USD) spot &amp; futures</td><td>Major &amp; minor currency pairs</td></tr>
+          <tr><td>Trading hours</td><td>23 hours, Monday – Friday</td><td>24 hours, Monday – Friday</td></tr>
+          <tr><td>Minimum capital</td><td data-cfg="minimum.arbitrage">$1,000</td><td data-cfg="minimum.forex">$1,000</td></tr>
+          <tr><td>Where funds are held</td><td>Your own account</td><td>Your own account</td></tr>
+          <tr><td>Reporting</td><td>Live in MT5</td><td>Live in MT5</td></tr>
+          <tr><td>Lock-in</td><td>None</td><td>None</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted mt-3">Many clients split capital between both — arbitrage as the stable base, forex as the growth engine. We'll model a split for you on the consultation call, or try the <a href="calculator.html" class="gold">returns calculator</a>.</p>
+  </div>
+</section>
+
+<section class="section" id="pipeline">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Research pipeline</span>
+      <h2>Always adding. Never rushing.</h2>
+      <p class="lead mt-2">Each candidate algorithm goes through the same four gates before a client ever sees it. Strategies below are <strong>in progress</strong> and not yet available.</p>
+    </div>
+    <div class="steps reveal mb-3">
+      <div class="step"><h3>Sourcing</h3><p>We review strategies from specialist quant developers and trading desks, with full logic disclosure and verified history.</p></div>
+      <div class="step"><h3>Backtest audit</h3><p>Independent re-testing across multiple years and market regimes, including realistic spreads, slippage and fees.</p></div>
+      <div class="step"><h3>Live on our capital</h3><p>A minimum of 3–6 months live trading on Capital Flow Algo's own money before any client onboarding.</p></div>
+      <div class="step"><h3>Client release</h3><p>Only when live results match expectations. Existing clients are offered first access.</p></div>
+    </div>
+    <div class="pipeline reveal">
+      <div class="pipe"><span class="tag grey">Live testing</span><h4>Silver &amp; Oil Spot–Futures Arbitrage</h4><p>Extending the gold arbitrage model to other liquid commodities.</p><div class="progress"><i style="width:65%"></i></div></div>
+      <div class="pipe"><span class="tag grey">Live testing</span><h4>Crypto Funding-Rate Arbitrage</h4><p>Market-neutral capture of perpetual-futures funding payments across exchanges.</p><div class="progress"><i style="width:45%"></i></div></div>
+      <div class="pipe"><span class="tag grey">Evaluation</span><h4>Index Futures Trend Model</h4><p>Systematic trend-following across US and European equity index futures.</p><div class="progress"><i style="width:25%"></i></div></div>
+    </div>
+    <p class="small muted mt-3">Want early access when a new strategy goes live? <a class="gold" data-href="wa" data-msg="Hi Capital Flow Algo, please add me to the early-access list for new strategies." href="#" target="_blank" rel="noopener">Join the early-access list on WhatsApp</a>.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Not sure which strategy fits?</h2>
+      <p>Tell us your capital and comfort with risk — we'll recommend a strategy or a split, with no obligation.</p>
+      <div class="actions">
+        <a class="btn btn-primary" data-href="call" href="#" target="_blank" rel="noopener">Book a Free Consultation</a>
+        <a class="btn btn-outline" href="performance.html">View track record</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/performance-data.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

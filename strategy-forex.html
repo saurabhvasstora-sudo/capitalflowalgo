@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forex Multi-Pair Algorithm — Capital Flow Algo</title>
+<meta name="description" content="Capital Flow Algo's forex multi-pair algorithm: a systematic, risk-limited strategy trading a diversified basket of currency pairs 24/5 in your own MT5 account. 15–20% historical monthly returns.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-strategy="forex">
+<header id="site-header"></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="strategies.html">Strategies</a> / Forex Multi-Pair Algo</div>
+    <span class="tag blue mb-2">Growth · Live</span>
+    <h1>Forex Multi-Pair Algorithm</h1>
+    <p class="lead">A fully systematic model that trades a diversified basket of currency pairs around the clock, five days a week. Every entry, exit and position size is decided by rules — with hard risk limits that a human trader can't override in the heat of the moment.</p>
+    <div class="hero-actions mt-3">
+      <a class="btn btn-primary" data-href="call" href="#" target="_blank" rel="noopener">Discuss this strategy</a>
+      <a class="btn btn-outline" href="calculator.html?s=forex">Run the numbers</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="metrics reveal">
+      <div class="metric"><span>Historical range</span><b class="blue">15 – 20% / mo</b></div>
+      <div class="metric"><span>Average month</span><b class="blue" id="sAvg">—</b></div>
+      <div class="metric"><span>Best / worst month</span><b><span id="sBest">—</span> <span class="muted" style="font-size:1rem">/</span> <span id="sWorst">—</span></b></div>
+      <div class="metric"><span>Positive months</span><b class="green" id="sPos">—</b></div>
+    </div>
+    <div class="notice" id="illustrativeBanner" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+      <span><strong>Illustrative data.</strong> The monthly figures below are representative of the strategy's historical range and will be replaced with verified live-account figures. Ask us for the verified statement.</span>
+    </div>
+    <div class="chart-card reveal">
+      <div class="chart-head"><h3>Monthly returns</h3><span class="small muted">Net of costs · as of <span id="sAsOf">—</span></span></div>
+      <div class="chart-box"><canvas id="stratChart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Many small edges, strictly risk-managed.</h2>
+      <p class="mt-2">Rather than betting on one currency, the algorithm runs its signal model across a basket of major and minor pairs — EUR/USD, GBP/USD, USD/JPY, AUD/USD, USD/CAD, NZD/USD and selected crosses. Diversification across pairs and sessions smooths the equity curve; strict rules keep any single trade or day from doing serious damage.</p>
+      <ul class="checks">
+        <li><strong>Signal.</strong> Multi-timeframe momentum and mean-reversion filters identify high-probability setups per pair.</li>
+        <li><strong>Size.</strong> Position size is calculated from account equity and current volatility — never a fixed lot.</li>
+        <li><strong>Protect.</strong> Every trade carries a stop-loss. A daily loss limit halts trading until the next session.</li>
+        <li><strong>Adapt.</strong> Exposure is reduced automatically around high-impact news and in abnormal volatility regimes.</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <div class="terminal">
+        <div class="terminal-bar"><i></i><i></i><i></i><span>RISK PARAMETERS</span></div>
+        <div class="terminal-body">
+          <div class="term-row"><span class="k">Max risk per trade</span><span class="v">Rule-based, equity-scaled</span></div>
+          <div class="term-row"><span class="k">Daily loss limit</span><span class="v">Automatic halt</span></div>
+          <div class="term-row"><span class="k">Stop-loss on every trade</span><span class="v green">Always</span></div>
+          <div class="term-row"><span class="k">Pairs traded</span><span class="v blue">Diversified basket</span></div>
+          <div class="term-row"><span class="k">Session coverage</span><span class="v">Asia · London · New York</span></div>
+          <div class="term-row"><span class="k">Human override</span><span class="v">Monitoring only — pause / resume</span></div>
+        </div>
+      </div>
+      <p class="small muted mt-2">Exact parameters are shared during onboarding. They are tuned periodically and may change with market conditions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Strategy profile</span>
+      <h2>Key facts</h2>
+    </div>
+    <div class="grid grid-2 reveal">
+      <div class="spec">
+        <div><span>Style</span><span>Systematic multi-pair, intraday to swing</span></div>
+        <div><span>Markets</span><span>Major &amp; minor FX pairs</span></div>
+        <div><span>Direction</span><span>Long and short</span></div>
+        <div><span>Historical monthly return</span><span>15 – 20% (net)</span></div>
+        <div><span>Trading hours</span><span>24h, Monday – Friday</span></div>
+        <div><span>Leverage</span><span>Moderate, volatility-scaled</span></div>
+      </div>
+      <div class="spec">
+        <div><span>Minimum capital</span><span data-cfg="minimum.forex">$1,000</span></div>
+        <div><span>Custody</span><span>Your own account with <span data-cfg="broker.name">a regulated MT5 broker</span></span></div>
+        <div><span>Reporting</span><span>Live in MT5</span></div>
+        <div><span>Withdrawals</span><span>Anytime</span></div>
+        <div><span>Suitable for</span><span>Growth-focused investors comfortable with drawdowns</span></div>
+        <div><span>Main risks</span><span>Drawdown periods, regime change, gap / news risk</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow">Check it yourself</span><h2>Watch this strategy trade, live.</h2><p class="mt-2">Read-only MT5 login for our own live account running this strategy. Open the free MT5 app, log in, and see every trade in real time.</p></div>
+    <div data-mt5-accounts="forex" class="reveal"></div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Honest about risk</span>
+      <h2>What can go wrong</h2>
+    </div>
+    <div class="grid grid-3 reveal">
+      <div class="card"><div class="icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l6 6 4-4 8 8"/></svg></div><h3>Drawdowns</h3><p>Higher returns come with higher variance. Losing weeks — and occasionally losing months — are a normal part of this strategy's profile.</p></div>
+      <div class="card"><div class="icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></div><h3>Regime change</h3><p>A model tuned to recent conditions can underperform when volatility or correlations shift. We monitor this daily and can pause the algorithm.</p></div>
+      <div class="card"><div class="icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div><h3>Gaps &amp; news shocks</h3><p>Central-bank surprises or weekend gaps can move price through a stop-loss. Exposure is cut around scheduled events, but not every shock is scheduled.</p></div>
+    </div>
+    <p class="small muted mt-3">Full details in our <a href="risk-disclosure.html" class="gold">Risk Disclosure</a>. Past performance is not a reliable indicator of future results.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>See the forex algorithm live</h2>
+      <p>We'll show you a live account, walk through recent trades and answer every question before you commit anything.</p>
+      <div class="actions">
+        <a class="btn btn-primary" data-href="call" href="#" target="_blank" rel="noopener">Book a Free Consultation</a>
+        <a class="btn btn-outline" href="strategy-arbitrage.html">Compare: Gold Arbitrage →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/performance-data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Returns Calculator — Capital Flow Algo</title>
+<meta name="description" content="Model how your capital could grow with Capital Flow Algo's arbitrage or forex strategy. Enter your capital and time horizon, toggle compounding, and see the projected range.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Calculator</div>
+    <span class="eyebrow">Projection tool</span>
+    <h1>Returns calculator</h1>
+    <p class="lead">Enter your starting capital and time horizon to see a projected range based on each strategy's historical monthly returns. This is a model, not a promise — see the note below.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="calc reveal">
+      <form id="calcForm" class="form-card" onsubmit="return false">
+        <div class="field">
+          <label for="strategy">Strategy</label>
+          <select id="strategy" name="strategy">
+            <option value="forex">Forex Multi-Pair Algo · 15–20% / month</option>
+            <option value="arbitrage">Gold Spot–Futures Arbitrage · 5–8% / month</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="capital">Starting capital (USD)</label>
+          <input type="number" id="capital" name="capital" min="1000" step="500" value="10000" inputmode="numeric">
+          <div class="mt-2" style="display:flex;gap:8px;flex-wrap:wrap">
+            <button type="button" class="btn btn-outline btn-sm" data-preset="1000">$1k</button>
+            <button type="button" class="btn btn-outline btn-sm" data-preset="5000">$5k</button>
+            <button type="button" class="btn btn-outline btn-sm" data-preset="10000">$10k</button>
+            <button type="button" class="btn btn-outline btn-sm" data-preset="25000">$25k</button>
+            <button type="button" class="btn btn-outline btn-sm" data-preset="50000">$50k</button>
+            <button type="button" class="btn btn-outline btn-sm" data-preset="100000">$100k</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="months">Time horizon <span class="range-val" id="monthsVal">12 months</span></label>
+          <input type="range" id="months" name="months" min="1" max="36" value="12">
+        </div>
+        <div class="field">
+          <label class="toggle"><input type="checkbox" id="compound" checked> Reinvest profits (compound monthly)</label>
+        </div>
+        <p class="small muted">Uncheck to model withdrawing profits every month while keeping the original capital working.</p>
+      </form>
+
+      <div class="calc-result">
+        <div class="calc-big">
+          <span>Projected balance range</span>
+          <b><span id="resLow">—</span> – <span id="resHigh">—</span></b>
+          <small>Mid-point <strong id="resMid">—</strong> · based on <span id="resRange">—</span></small>
+        </div>
+        <div class="calc-row">
+          <div class="metric"><span>Projected profit range</span><b class="green" id="resProfit">—</b></div>
+          <div class="metric"><span>First-month profit range</span><b class="gold" id="resMonthly">—</b></div>
+        </div>
+        <div class="chart-card"><div class="chart-box" style="height:280px"><canvas id="calcChart"></canvas></div></div>
+      </div>
+    </div>
+
+    <div class="notice danger mt-4 reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      <span><strong>This calculator is for illustration only.</strong> It applies each strategy's historical monthly return range uniformly to every month. Real results vary month to month, can be lower than the range shown, and can be negative. It does not account for fees, taxes, deposits or withdrawals, and it is not a forecast, guarantee or investment advice. Please read our <a href="risk-disclosure.html" style="color:inherit;text-decoration:underline">Risk Disclosure</a>.</span>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Want a projection built around your actual situation?</h2>
+      <p>We'll model your capital, a strategy split and our fees together on a call — with the real track record in front of you.</p>
+      <div class="actions">
+        <a class="btn btn-primary" data-href="call" href="#" target="_blank" rel="noopener">Book a Free Consultation</a>
+        <a class="btn btn-outline" href="performance.html">View track record</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/performance-data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  // Pre-select strategy from ?s=forex|arbitrage
+  (function(){ const s = new URLSearchParams(location.search).get("s"); const el = document.getElementById("strategy"); if (s && el && [...el.options].some(o => o.value === s)) { el.value = s; el.dispatchEvent(new Event("input", { bubbles: true })); } })();
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Track Record &amp; Performance — Capital Flow Algo</title>
+<meta name="description" content="Month-by-month historical performance of Capital Flow Algo's gold spot–futures arbitrage and forex multi-pair strategies, with growth charts and verified-account access.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Performance</div>
+    <span class="eyebrow">Track record</span>
+    <h1>Every month, on the record.</h1>
+    <p class="lead">Net monthly returns for both live strategies, updated at each month-end. Figures are after all trading costs. Data as of <strong id="asOf">—</strong>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="notice" id="illustrativeBanner" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+      <span><strong>Illustrative data.</strong> The figures on this page are representative of each strategy's historical range and are being replaced with verified live-account results. Contact us for a verified statement or investor-access login.</span>
+    </div>
+
+    <div class="grid grid-2 reveal mb-3">
+      <div>
+        <h3 class="mb-2"><span class="tag green">Arbitrage</span>&nbsp; Gold Spot–Futures Arbitrage</h3>
+        <div class="metrics" style="grid-template-columns:repeat(2,1fr);margin-bottom:0">
+          <div class="metric"><span>Avg / month</span><b class="gold" id="arbAvg">—</b></div>
+          <div class="metric"><span>Cumulative</span><b class="gold" id="arbCum">—</b></div>
+          <div class="metric"><span>Best / worst</span><b><span id="arbBest">—</span> <span class="muted" style="font-size:1rem">/</span> <span id="arbWorst">—</span></b></div>
+          <div class="metric"><span>Positive months</span><b class="green" id="arbPos">—</b></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="mb-2"><span class="tag blue">Forex</span>&nbsp; Forex Multi-Pair Algo</h3>
+        <div class="metrics" style="grid-template-columns:repeat(2,1fr);margin-bottom:0">
+          <div class="metric"><span>Avg / month</span><b class="blue" id="fxAvg">—</b></div>
+          <div class="metric"><span>Cumulative</span><b class="blue" id="fxCum">—</b></div>
+          <div class="metric"><span>Best / worst</span><b><span id="fxBest">—</span> <span class="muted" style="font-size:1rem">/</span> <span id="fxWorst">—</span></b></div>
+          <div class="metric"><span>Positive months</span><b class="green" id="fxPos">—</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-card reveal">
+      <div class="chart-head">
+        <h3>Growth of $10,000 vs monthly returns</h3>
+        <div class="seg" id="chartMode"><button class="active" data-mode="growth">Growth of $10k</button><button data-mode="monthly">Monthly %</button></div>
+      </div>
+      <div class="chart-box"><canvas id="perfChart"></canvas></div>
+      <p class="small muted mt-2">Growth chart assumes profits are reinvested (compounded) and uses a logarithmic scale so both strategies remain readable.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow">Monthly breakdown</span><h2>Month by month</h2></div>
+    <div class="table-wrap reveal">
+      <table id="perfTable">
+        <thead><tr><th>Month</th><th class="num">Arbitrage</th><th class="num">$10k grows to</th><th class="num">Forex</th><th class="num">$10k grows to</th></tr></thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow">Verify it yourself</span>
+      <h2>Don't take our word for it.</h2>
+      <p class="mt-2">We believe the only performance worth showing is performance you can check. Every client gets live MT5 access to their own account from day one. Prospective clients can request read-only investor access to a live Capital Flow Algo account, which shows every trade and balance change in real time — nothing can be hidden or edited.</p>
+      <div id="verifyBlock" style="display:none" class="mt-3"><div id="verifyContent"></div></div>
+      <div class="hero-actions mt-3">
+        <a class="btn btn-primary" data-href="wa" data-msg="Hi Capital Flow Algo, I'd like investor (read-only) access to a live account to verify the track record." href="#" target="_blank" rel="noopener">Request investor access</a>
+        <a class="btn btn-outline" href="how-it-works.html">How tracking works</a>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="grid" style="gap:14px">
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg><div><b>Read-only by design</b><span>MT5 investor passwords allow viewing only. No trading, no withdrawals, no edits.</span></div></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 14l3-3 2 2 5-5M8 20h8"/></svg><div><b>Broker-generated statements</b><span>Monthly statements come directly from the broker, not from us.</span></div></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Updated monthly</b><span>This page is refreshed after every month-end close.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="notice danger reveal" style="margin:0">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      <span><strong>Important.</strong> Past performance is not a reliable indicator of future results. Returns shown are historical, can vary from month to month, and may be negative. Trading leveraged products carries a high level of risk to your capital. Read the full <a href="risk-disclosure.html" style="color:inherit;text-decoration:underline">Risk Disclosure</a>.</span>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/performance-data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capital Flow Algo — Algorithmic Trading Strategies, Dubai</title>
+<meta name="description" content="Capital Flow Algo delivers vetted, fully automated trading strategies — gold spot–futures arbitrage and a forex multi-pair algorithm — executed in your own MT5 account with a regulated broker. Based in Dubai Silicon Oasis.">
+<meta property="og:title" content="Capital Flow Algo — Algorithmic Trading Strategies, Dubai">
+<meta property="og:description" content="Vetted trading algorithms, running transparently in your own MT5 account. Funds stay with your broker. Track every trade live.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.capitalflowalgo.com/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><b>EUR/USD</b> 1.0842 <i class="up">▲ 0.12%</i></span><span><b>GBP/USD</b> 1.2716 <i class="up">▲ 0.08%</i></span><span><b>USD/JPY</b> 149.32 <i class="dn">▼ 0.21%</i></span><span><b>AUD/USD</b> 0.6588 <i class="up">▲ 0.15%</i></span><span><b>XAU/USD</b> 2,412.10 <i class="up">▲ 0.34%</i></span><span><b>GOLD SPOT</b> 2,412.10 <i class="up">▲ 0.34%</i></span><span><b>GOLD FUT</b> 2,447.30 <i class="up">basis +1.46%</i></span><span><b>XAG/USD</b> 28.64 <i class="dn">▼ 0.22%</i></span><span><b>USD/CAD</b> 1.3588 <i class="up">▲ 0.14%</i></span><span><b>USD/CHF</b> 0.8813 <i class="dn">▼ 0.05%</i></span><span><b>NZD/USD</b> 0.6021 <i class="up">▲ 0.19%</i></span>
+    <span><b>EUR/USD</b> 1.0842 <i class="up">▲ 0.12%</i></span><span><b>GBP/USD</b> 1.2716 <i class="up">▲ 0.08%</i></span><span><b>USD/JPY</b> 149.32 <i class="dn">▼ 0.21%</i></span><span><b>AUD/USD</b> 0.6588 <i class="up">▲ 0.15%</i></span><span><b>XAU/USD</b> 2,412.10 <i class="up">▲ 0.34%</i></span><span><b>GOLD SPOT</b> 2,412.10 <i class="up">▲ 0.34%</i></span><span><b>GOLD FUT</b> 2,447.30 <i class="up">basis +1.46%</i></span><span><b>XAG/USD</b> 28.64 <i class="dn">▼ 0.22%</i></span><span><b>USD/CAD</b> 1.3588 <i class="up">▲ 0.14%</i></span><span><b>USD/CHF</b> 0.8813 <i class="dn">▼ 0.05%</i></span><span><b>NZD/USD</b> 0.6021 <i class="up">▲ 0.19%</i></span>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge"><i class="dot"></i> Live strategies · Dubai Silicon Oasis</span>
+      <h1 class="mt-3">Institutional-grade trading algorithms, <span class="accent">running in your own account.</span></h1>
+      <p class="lead">You keep your money in your own trading account. We connect a proven, fully automatic trading program to it. It trades for you around the clock, and you watch the profit grow on your phone. No experience needed.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" data-href="call" href="#" target="_blank" rel="noopener">Book a Free Consultation</a>
+        <a class="btn btn-outline" href="strategies.html">Explore Strategies</a>
+      </div>
+      <ul class="hero-points">
+        <li>No custody of your funds</li>
+        <li>Real-time MT5 tracking</li>
+        <li>Withdraw anytime</li>
+        <li>Two live strategies, more in pipeline</li>
+      </ul>
+    </div>
+
+    <div class="terminal reveal">
+      <div class="terminal-bar"><i></i><i></i><i></i><span>LIVE PERFORMANCE MONITOR · as of <b id="heroAsOf">—</b></span></div>
+      <div class="terminal-body">
+        <div class="term-row"><span class="k">Forex Multi-Pair · avg / month</span><span class="v blue" id="heroFx">—</span></div>
+        <div class="term-row"><span class="k">Gold Arbitrage · avg / month</span><span class="v gold" id="heroArb">—</span></div>
+        <div class="term-row"><span class="k">Track record</span><span class="v green" id="heroMonths">—</span></div>
+        <div class="term-chart"><canvas id="heroChart" aria-label="Growth of $100 across both strategies"></canvas></div>
+        <p class="small mt-2" id="heroIllustrative" style="display:none;color:var(--dim)">Illustrative figures shown until audited data is published. <a href="performance.html" class="gold">See full track record →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat"><b>5–8%</b><span>Arbitrage · historical monthly return</span></div>
+      <div class="stat"><b>15–20%</b><span>Forex · historical monthly return</span></div>
+      <div class="stat"><b>24/5</b><span>Fully automated execution</span></div>
+      <div class="stat"><b>100%</b><span>Funds in your own broker account</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST ================= -->
+<section class="section-tight">
+  <div class="container">
+    <div class="trust reveal">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+        <div><b>You keep custody</b><span>Capital sits in your own account with <span data-cfg="broker.name">a regulated MT5 broker</span>. We never hold client money.</span></div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 14l3-3 2 2 5-5M8 20h8"/></svg>
+        <div><b>Full transparency</b><span>Every trade, balance and equity change visible live in MT5 on your phone or desktop.</span></div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+        <div><b>Registered in Dubai</b><span>A registered company operating from Dubai Silicon Oasis, UAE. Meet us at our office.</span></div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><b>Withdraw anytime</b><span>No lock-ins. Your broker account, your money — withdraw whenever you choose.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIMPLE EXPLAINER ================= -->
+<section class="section" id="simple">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Never traded before?</span>
+      <h2>Here's the whole idea in four steps.</h2>
+      <p class="lead mt-2" style="margin-left:auto;margin-right:auto">A trading algorithm is a computer program that buys and sells in the markets automatically, following proven rules — like autopilot. Here is how you use one.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><h3>You deposit into <em>your</em> account</h3><p>You open a trading account in your own name with a regulated broker and put your money there. Not with us — with the broker. Only you can take it out.</p></div>
+      <div class="step"><h3>We switch on the algorithm</h3><p>We connect our trading program to your account. It has permission to trade, and nothing else. Takes us a few minutes, takes you zero effort.</p></div>
+      <div class="step"><h3>It trades for you, 24/5</h3><p>The program watches the markets every second and makes thousands of small, calculated trades. No emotions, no sleep, no guessing.</p></div>
+      <div class="step"><h3>You watch the profit grow</h3><p>Profit lands in your account balance. Check it any time on the free MT5 phone app. Withdraw whenever you want, or leave it in to grow faster.</p></div>
+    </div>
+    <div class="grid grid-2 mt-4 reveal" style="align-items:stretch">
+      <div class="calc-big">
+        <span>A simple example</span>
+        <b style="font-size:clamp(1.4rem,3vw,2rem)">$10,000 → about $500 – $800 a month</b>
+        <small>With the arbitrage strategy's historical 5–8% monthly range. In the forex strategy (15–20%), the same $10,000 has historically made $1,500 – $2,000 a month. You can start from just <strong data-cfg="minimum.forex">$1,000</strong>. Leave the profit in, and next month's percentage works on a bigger amount.</small>
+        <a class="btn btn-outline btn-sm mt-3" href="calculator.html">Try your own numbers →</a>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">What you need to know, honestly</h3>
+        <ul class="broker-points" style="margin:12px 0 0">
+          <li>These are historical results, not promises. Some months are better, some worse, and a losing month is possible.</li>
+          <li>Your money stays in your own account. We can trade it; we can never withdraw it.</li>
+          <li>There's no lock-in. Stop or withdraw any time.</li>
+          <li>Only invest money you won't need soon.</li>
+        </ul>
+        <a class="btn btn-primary btn-sm mt-3" href="how-it-works.html#beginners">Read the plain-English guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRATEGIES ================= -->
+<section class="section" id="strategies">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Live Strategies</span>
+      <h2>Two strategies. Two risk profiles. One transparent setup.</h2>
+      <p class="lead mt-2">Choose the market-neutral consistency of arbitrage, the higher-return profile of our forex algo, or split your capital across both.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="card card-strategy reveal">
+        <div class="top">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17l6-6 4 4 6-6"/><path d="M14 9h6v6"/></svg></div>
+          <span class="tag green">Market neutral</span>
+        </div>
+        <h3>Gold Spot–Futures Arbitrage</h3>
+        <div class="ret">5 – 8% <small>/ month · historical</small></div>
+        <p>Captures the price gap between gold's spot price and its futures contract. Buy gold spot, sell gold futures — the difference is locked in whether gold rises or falls.</p>
+        <ul>
+          <li>Direction-agnostic: works in bull, bear and sideways markets</li>
+          <li>Hedged positions — no naked exposure</li>
+          <li>Lower volatility, steady monthly accrual</li>
+          <li>Minimum capital: <strong data-cfg="minimum.arbitrage">$1,000</strong></li>
+        </ul>
+        <a class="btn btn-outline btn-sm" href="strategy-arbitrage.html">Strategy details →</a>
+      </article>
+      <article class="card card-strategy blue reveal">
+        <div class="top">
+          <div class="icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div>
+          <span class="tag blue">Growth</span>
+        </div>
+        <h3>Forex Multi-Pair Algo</h3>
+        <div class="ret">15 – 20% <small>/ month · historical</small></div>
+        <p>A systematic algorithm trading a diversified basket of major and minor currency pairs, 24 hours a day, five days a week — with strict per-trade and per-day risk limits.</p>
+        <ul>
+          <li>Diversified across multiple currency pairs</li>
+          <li>Automated risk controls and drawdown limits</li>
+          <li>Higher return target with managed exposure</li>
+          <li>Minimum capital: <strong data-cfg="minimum.forex">$1,000</strong></li>
+        </ul>
+        <a class="btn btn-outline btn-sm" href="strategy-forex.html">Strategy details →</a>
+      </article>
+    </div>
+    <p class="small mt-3 muted">Historical monthly returns are net of costs and based on live trading results. Past performance is not a guarantee of future returns — see our <a href="risk-disclosure.html" class="gold">Risk Disclosure</a>.</p>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>From first call to live trading in under a week</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><h3>Consultation</h3><p>A short call to understand your capital, risk appetite and goals. We recommend a strategy or a split.</p></div>
+      <div class="step"><h3>Open &amp; fund your account</h3><p>You open an account with <span data-cfg="broker.name">a regulated MT5 broker</span> in your own name and deposit directly with the broker.</p></div>
+      <div class="step"><h3>We connect the algo</h3><p>Our team links the strategy to your account. Trading starts automatically — no software for you to install or manage.</p></div>
+      <div class="step"><h3>Track live in MT5</h3><p>Watch every trade, profit and balance change in real time from the MT5 app. Withdraw profits or capital whenever you like.</p></div>
+    </div>
+    <div class="center mt-4"><a class="btn btn-primary" href="how-it-works.html">See the full process</a></div>
+  </div>
+</section>
+
+<!-- ================= WHY US ================= -->
+<section class="section">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow">Why Capital Flow Algo</span>
+      <h2>Curated strategies, not promises.</h2>
+      <p class="lead mt-2">We don't build every algorithm ourselves — and we say so. Capital Flow Algo partners with specialist quantitative developers, puts each strategy through months of live evaluation on our own capital, and only then offers it to clients. Our value is selection, monitoring and honest reporting.</p>
+      <ul class="checks">
+        <li><strong>Vetted, not hyped.</strong> Every strategy runs on our own money first. If it doesn't hold up live, it never reaches you.</li>
+        <li><strong>Continuous monitoring.</strong> We watch drawdowns, execution quality and market regime daily and pause strategies that drift from expectations.</li>
+        <li><strong>Growing platform.</strong> New algorithms are under evaluation right now — clients get first access as they go live.</li>
+        <li><strong>Straight talk on risk.</strong> Returns are ranges, not guarantees. Losing months can happen. We'd rather tell you now.</li>
+      </ul>
+      <a class="btn btn-outline mt-3" href="about.html">About the company</a>
+    </div>
+    <div class="reveal">
+      <div class="spec">
+        <div><span>Execution platform</span><span data-cfg="platform">MetaTrader 5 (MT5)</span></div>
+        <div><span>Broker</span><span>Regulated MT5 broker</span></div>
+        <div><span>Custody of funds</span><span>Client's own broker account</span></div>
+        <div><span>Reporting</span><span>Live in MT5, 24/7</span></div>
+        <div><span>Lock-in period</span><span>None</span></div>
+        <div><span>Fees</span><span>Discussed on your consultation call</span></div>
+        <div><span>Office</span><span>Dubai Silicon Oasis, UAE</span></div>
+        <div><span>Support</span><span>WhatsApp · Email · In person</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LIVE ACCOUNTS ================= -->
+<section class="section section-alt" id="live-accounts">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Check it yourself</span>
+      <h2>Log in and watch our live accounts.</h2>
+      <p class="lead mt-2" style="margin-left:auto;margin-right:auto">We publish read-only login details for our own live trading accounts. Open the free MetaTrader 5 app, log in with these, and see every trade and every profit as it happens — nothing can be hidden or edited.</p>
+    </div>
+    <div data-mt5-accounts class="reveal"></div>
+    <div class="center mt-3"><a class="btn btn-outline btn-sm" href="performance.html">Full month-by-month track record →</a></div>
+  </div>
+</section>
+
+<!-- ================= PIPELINE ================= -->
+<section class="section-tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Research pipeline</span>
+      <h2>What's coming next</h2>
+      <p class="mt-2">We are constantly evaluating new algorithms. These are currently in live testing on our own capital and are <strong>not yet available</strong> to clients.</p>
+    </div>
+    <div class="pipeline reveal">
+      <div class="pipe"><span class="tag grey">Live testing</span><h4>Silver &amp; Oil Spot–Futures Arbitrage</h4><p>Extending the gold arbitrage model to other liquid commodities.</p><div class="progress"><i style="width:65%"></i></div></div>
+      <div class="pipe"><span class="tag grey">Live testing</span><h4>Crypto Funding-Rate Arbitrage</h4><p>Market-neutral capture of perpetual-futures funding payments across exchanges.</p><div class="progress"><i style="width:45%"></i></div></div>
+      <div class="pipe"><span class="tag grey">Evaluation</span><h4>Index Futures Trend Model</h4><p>Systematic trend-following across US and European equity index futures.</p><div class="progress"><i style="width:25%"></i></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ PREVIEW ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>The questions everyone asks first</h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>Where is my money held? Can Capital Flow Algo withdraw it?</summary><p>Your money is held in <strong>your own trading account</strong>, in your name, with <span data-cfg="broker.name">a regulated MT5 broker</span>. We connect the algorithm with trading-only permissions. We cannot withdraw, transfer or move your funds — only you can.</p></details>
+      <details><summary>Are the returns guaranteed?</summary><p>No. The 5–8% and 15–20% figures are <strong>historical monthly ranges</strong> from live trading, not guarantees. Markets change, and losing months are possible. Please read our <a href="risk-disclosure.html" class="gold">Risk Disclosure</a> before investing.</p></details>
+      <details><summary>Can I stop or withdraw at any time?</summary><p>Yes. There is no lock-in period. You can pause the strategy or withdraw funds from your broker account at any time, subject to open trades being closed.</p></details>
+      <details><summary>Did you build these algorithms yourselves?</summary><p>No — and we're upfront about that. We partner with specialist quantitative developers and license their strategies. Our role is to vet them on our own capital, monitor them daily, and give you honest, transparent access.</p></details>
+    </div>
+    <div class="center mt-4"><a class="btn btn-outline" href="faq.html">Read all FAQs</a></div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="section-tight">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Ready to see the strategies in action?</h2>
+      <p>Book a free consultation with our team in Dubai. We'll walk you through the track record, the setup and the risks — and you decide.</p>
+      <div class="actions">
+        <a class="btn btn-primary" data-href="call" href="#" target="_blank" rel="noopener">Book a Free Consultation</a>
+        <a class="btn btn-wa" data-href="wa" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/performance-data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
