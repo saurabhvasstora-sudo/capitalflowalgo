@@ -1,5 +1,11 @@
 # Deploying the Capital Flow Algo website
 
+> **Current setup (live since 22 Sep 2026):** the site is hosted on **GitHub Pages** from the repository
+> `github.com/saurabhvasstora-sudo/capitalflowalgo` (branch `main`, root folder, `CNAME` = capitalflowalgo.com).
+> DNS at GoDaddy: four A records for `@` → 185.199.108/109/110/111.153 and CNAME `www` → `saurabhvasstora-sudo.github.io`.
+> **To publish changes:** commit and `git push` from `C:\CapitalFlowAlgo` — the live site updates in about a minute.
+> The Netlify/Cloudflare/Vercel/cPanel sections below are alternatives only.
+
 The site is plain static files, so any host works. The options below are ordered from
 easiest to most manual. All of them give you free HTTPS.
 
