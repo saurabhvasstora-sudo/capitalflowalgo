@@ -58,9 +58,21 @@ window.CFA_CONFIG = {
 
   /* --- Minimum investment ---------------------------------------- */
   minimum: {
-    arbitrage: "$1,000",
-    forex:     "$1,000"
+    arbitrage: "$3,000",
+    forex:     "$1,000",
+    entry:     "$1,000"                             // lowest entry point across the system
   },
+
+  /* --- Return tiers ------------------------------------------------
+     Monthly return range by account size. Higher capital = higher tier.
+     Edit the numbers or add tiers; the calculator, strategy cards and
+     the home page all read from here.                                */
+  returnTiers: [
+    { min: 1000,  max: 9999, low: 3, high: 5, name: "Core",    note: "Entry tier" },
+    { min: 10000, max: null, low: 5, high: 8, name: "Premium", note: "Higher allocation & priority execution" }
+  ],
+  returnRangeLabel: "3 – 8%",                       // overall range shown in headlines
+  tierThresholdLabel: "$10,000",                    // where the higher tier begins
 
   /* --- Contact form (Web3Forms — free, no backend) ---------------
      1. Go to https://web3forms.com, enter the email above, get an Access Key.

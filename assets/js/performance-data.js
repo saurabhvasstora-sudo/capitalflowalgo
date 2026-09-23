@@ -21,16 +21,16 @@ window.CFA_PERFORMANCE = {
     arbitrage: {
       name:  "Gold Spot–Futures Arbitrage",
       short: "Arbitrage",
-      targetRange: "5 – 8% / month",
+      targetRange: "3 – 6% / month",
       color: "#D9B24A",
-      returns: [6.2, 5.8, 7.1, 6.5, 5.4, 6.9, 7.6, 6.1, 5.7, 6.8, 7.3, 5.9, 6.4, 7.0, 5.6, 6.7, 7.8, 6.3, 5.5, 6.6]
+      returns: [4.2, 3.8, 5.1, 4.5, 3.4, 4.9, 5.6, 4.1, 3.7, 4.8, 5.3, 3.9, 4.4, 5.0, 3.6, 4.7, 5.8, 4.3, 3.5, 4.6]
     },
     forex: {
       name:  "Forex Multi-Pair Algo",
       short: "Forex",
-      targetRange: "15 – 20% / month",
+      targetRange: "4 – 8% / month",
       color: "#34C77B",
-      returns: [16.4, 18.1, 15.2, 19.3, 17.6, 15.9, 18.8, 16.1, 17.4, 19.6, 15.5, 18.2, 16.9, 17.8, 15.3, 19.1, 16.6, 18.4, 17.1, 15.8]
+      returns: [6.4, 7.1, 5.2, 7.3, 6.6, 5.9, 7.8, 6.1, 6.4, 7.6, 5.5, 7.2, 6.9, 6.8, 5.3, 7.1, 6.6, 7.4, 6.1, 5.8]
     }
   }
 };

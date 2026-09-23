@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gold Spot–Futures Arbitrage Strategy — Capital Flow Algo</title>
-<meta name="description" content="How Capital Flow Algo's market-neutral gold spot–futures arbitrage strategy works: buy gold spot, sell gold futures, capture the basis. 5–8% historical monthly returns with hedged, direction-agnostic positioning.">
+<meta name="description" content="How Capital Flow Algo's market-neutral gold spot–futures arbitrage strategy works: buy gold spot, sell gold futures, capture the basis. 3–8% historical monthly returns by capital tier, with hedged, direction-agnostic positioning.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
@@ -32,7 +32,7 @@
 <section class="section">
   <div class="container">
     <div class="metrics reveal">
-      <div class="metric"><span>Historical range</span><b class="gold">5 – 8% / mo</b></div>
+      <div class="metric"><span>Historical range (by tier)</span><b class="gold">3 – 8% / mo</b></div>
       <div class="metric"><span>Average month</span><b class="gold" id="sAvg">—</b></div>
       <div class="metric"><span>Best / worst month</span><b><span id="sBest">—</span> <span class="muted" style="font-size:1rem">/</span> <span id="sWorst">—</span></b></div>
       <div class="metric"><span>Positive months</span><b class="green" id="sPos">—</b></div>
@@ -88,12 +88,12 @@
         <div><span>Style</span><span>Cash-and-carry / basis arbitrage</span></div>
         <div><span>Market</span><span>Gold (XAU/USD) spot &amp; gold futures</span></div>
         <div><span>Direction</span><span>Market neutral — fully hedged</span></div>
-        <div><span>Historical monthly return</span><span>5 – 8% (net)</span></div>
+        <div><span>Historical monthly return</span><span>3 – 8% net, by capital tier</span></div>
         <div><span>Typical holding period</span><span>Days to weeks, to convergence</span></div>
         <div><span>Leverage</span><span>Low — used only to balance the two legs</span></div>
       </div>
       <div class="spec">
-        <div><span>Minimum capital</span><span data-cfg="minimum.arbitrage">$1,000</span></div>
+        <div><span>Minimum capital</span><span data-cfg="minimum.arbitrage">$3,000</span></div>
         <div><span>Custody</span><span>Your own account with <span data-cfg="broker.name">a regulated MT5 broker</span></span></div>
         <div><span>Reporting</span><span>Live in MT5</span></div>
         <div><span>Withdrawals</span><span>Anytime (open positions closed at convergence)</span></div>

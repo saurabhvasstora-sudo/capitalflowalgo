@@ -411,27 +411,62 @@ Capital: ${d.capital}`;
     }
   }
 
-  /* ---------- calculator ---------- */
+  /* ---------- calculator (capital-tiered) ---------- */
+  const tierFor = (cap) => {
+    const t = (C.returnTiers || []).slice().sort((x, y) => x.min - y.min);
+    let hit = t[0];
+    t.forEach((x) => { if (cap >= x.min) hit = x; });
+    return hit || { min: 0, max: null, low: 3, high: 8, name: "", note: "" };
+  };
+  const nextTier = (cap) => (C.returnTiers || []).filter((x) => x.min > cap).sort((a2, b2) => a2.min - b2.min)[0] || null;
+
   function calculator() {
     const form = $("#calcForm");
     if (!form) return;
-    const cap = $("#capital"), months = $("#months"), strat = $("#strategy"), comp = $("#compound"), mv = $("#monthsVal");
-    const RANGES = { arbitrage: [5, 8], forex: [15, 20] };
+    const cap = $("#capital"), months = $("#months"), comp = $("#compound"), mv = $("#monthsVal");
     let chart;
+
     const run = () => {
-      const c = Math.max(0, +cap.value || 0), n = +months.value, [lo, hi] = RANGES[strat.value], isComp = comp.checked;
+      const c = Math.max(0, +cap.value || 0), n = +months.value, isComp = comp.checked;
+      const t = tierFor(c), lo = t.low, hi = t.high;
       mv.textContent = n + (n === 1 ? " month" : " months");
+
       const series = (r) => { const out = [c]; let v = c; for (let i = 1; i <= n; i++) { v = isComp ? v * (1 + r / 100) : v + c * r / 100; out.push(v); } return out; };
       const L = series(lo), H = series(hi), M = series((lo + hi) / 2);
       const end = (s) => s[s.length - 1];
-      $("#resLow").textContent = fmtMoney(end(L)); $("#resHigh").textContent = fmtMoney(end(H)); $("#resMid").textContent = fmtMoney(end(M));
+
+      $("#resLow").textContent = fmtMoney(end(L));
+      $("#resHigh").textContent = fmtMoney(end(H));
+      $("#resMid").textContent = fmtMoney(end(M));
       $("#resProfit").textContent = fmtMoney(end(L) - c) + " – " + fmtMoney(end(H) - c);
       $("#resMonthly").textContent = fmtMoney(c * lo / 100) + " – " + fmtMoney(c * hi / 100);
       $("#resRange").textContent = `${lo}–${hi}% per month, ${isComp ? "profits reinvested" : "profits withdrawn monthly"}`;
+
+      // tier badge
+      const badge = $("#tierBadge");
+      if (badge) badge.innerHTML = `<span class="tier-pill">${esc(t.name)} tier</span> <b>${lo}–${hi}% / month</b>${t.note ? ` <span class="muted small">· ${esc(t.note)}</span>` : ""}`;
+
+      // next-tier nudge
+      const nt = nextTier(c), nudge = $("#tierNudge");
+      if (nudge) {
+        if (nt) {
+          const gap = nt.min - c;
+          nudge.innerHTML = `Add <strong>${fmtMoney(gap)}</strong> more (to ${fmtMoney(nt.min)}) and your account moves to the <strong>${esc(nt.name)}</strong> tier — <strong>${nt.low}–${nt.high}% per month</strong>.`;
+          nudge.style.display = "";
+        } else { nudge.innerHTML = `You are on our highest tier — <strong>${lo}–${hi}% per month</strong>.`; nudge.style.display = ""; }
+      }
+
+      // tier table highlight
+      $$("[data-tier-row]").forEach((r) => r.classList.toggle("active", +r.dataset.tierRow === t.min));
+
       if (!window.Chart) return;
       const ctx = $("#calcChart").getContext("2d");
       const labels = Array.from({ length: n + 1 }, (_, i) => i === 0 ? "Start" : "M" + i);
-      if (chart) { chart.data.labels = labels; chart.data.datasets[0].data = H; chart.data.datasets[1].data = L; chart.update(); return; }
+      if (chart) {
+        chart.data.labels = labels; chart.data.datasets[0].data = H; chart.data.datasets[1].data = L;
+        chart.data.datasets[0].label = "Upper (" + hi + "%)"; chart.data.datasets[1].label = "Lower (" + lo + "%)";
+        chart.update(); return;
+      }
       chart = new Chart(ctx, { type: "line", data: { labels, datasets: [
         { label: "Upper (" + hi + "%)", data: H, borderColor: "#F2D57C", backgroundColor: gradient(ctx, "#D9B24A", 0.3), fill: "+1", tension: .3, borderWidth: 2, pointRadius: 0 },
         { label: "Lower (" + lo + "%)", data: L, borderColor: "#D9B24A", backgroundColor: "transparent", tension: .3, borderWidth: 2, pointRadius: 0, borderDash: [5, 4] }
@@ -439,8 +474,20 @@ Capital: ${d.capital}`;
         plugins: { legend: { labels: { usePointStyle: true, boxWidth: 8 } }, tooltip: { callbacks: { label: (x) => ` ${x.dataset.label}: ${fmtMoney(x.parsed.y)}` } } },
         scales: { x: { grid: { display: false }, ticks: { maxTicksLimit: 12 } }, y: { ticks: { callback: (v) => "$" + (+v).toLocaleString("en-US") } } } } });
     };
+
     form.addEventListener("input", run); run();
-    $$("[data-preset]").forEach((b) => b.addEventListener("click", () => { cap.value = b.dataset.preset; run(); }));
+    $$("[data-preset]").forEach((b2) => b2.addEventListener("click", () => { cap.value = b2.dataset.preset; run(); }));
+  }
+
+  /* ---------- tier table (rendered from config) ---------- */
+  function tierTable() {
+    const host = $("#tierTable");
+    if (!host || !C.returnTiers) return;
+    host.innerHTML = C.returnTiers.map((t) => `
+      <div class="tier-row" data-tier-row="${t.min}">
+        <div><b>${esc(t.name)}</b><small>${t.max ? fmtMoney(t.min) + " – " + fmtMoney(t.max) : fmtMoney(t.min) + "+"}</small></div>
+        <div class="tier-rate">${t.low}–${t.high}%<small>per month</small></div>
+      </div>`).join("");
   }
 
   /* ---------- strategy page mini stats ---------- */
@@ -460,6 +507,6 @@ Capital: ${d.capital}`;
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    buildHeader(); buildFooter(); bindConfig(); initTheme(); reveal(); contactForm(); chartDefaults(); heroChart(); performancePage(); calculator(); strategyStats(); mt5Cards(); regForm(); themeCharts();
+    buildHeader(); buildFooter(); bindConfig(); initTheme(); reveal(); contactForm(); chartDefaults(); heroChart(); performancePage(); calculator(); tierTable(); strategyStats(); mt5Cards(); regForm(); themeCharts();
   });
 })();
