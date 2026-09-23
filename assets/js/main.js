@@ -125,6 +125,7 @@
             <h4>Get in touch</h4>
             <ul>
               <li><a href="mailto:${esc(C.email)}">${esc(C.email)}</a></li>
+              ${C.emailAlt ? `<li><a href="mailto:${esc(C.emailAlt)}">${esc(C.emailAlt)}</a></li>` : ""}
               <li><a href="tel:+${esc(C.whatsapp)}">${esc(C.phoneDisplay)}</a></li>
               <li><a href="${waLink()}" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
               <li><span class="small muted">${esc(C.officeHours)}</span></li>
@@ -156,6 +157,7 @@
       if (k === "wa") el.href = waLink(el.dataset.msg);
       else if (k === "call") el.href = callLink();
       else if (k === "mail") el.href = "mailto:" + C.email;
+      else if (k === "mailAlt") el.href = "mailto:" + (C.emailAlt || C.email);
       else if (k === "tel") el.href = "tel:+" + C.whatsapp;
       else if (k === "maps") el.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(C.mapsQuery || "");
       else if (k === "broker" && C.broker && C.broker.url) el.href = C.broker.url;
@@ -215,6 +217,24 @@
         </div>`).join("") + `</div>
         <p class="small muted mt-2">How to check: install <strong>MetaTrader 5</strong> from the App Store / Google Play → <em>Login to an existing account</em> → search the server name → enter the login and investor password. Investor access is <strong>read-only</strong> — you can see every trade, balance and equity change, but nothing can be executed or withdrawn.</p>`;
     });
+  }
+
+  /* ---------- innovation lab: <div data-lab></div> ---------- */
+  function labSection() {
+    const host = $("[data-lab]");
+    if (!host || !C.lab || !C.lab.projects) return;
+    host.innerHTML = `<div class="lab-grid">` + C.lab.projects.map((p) => `
+      <article class="lab-card${p.locked ? " locked" : ""}">
+        <div class="lab-top">
+          <span class="lab-stage">${esc(p.stage)}</span>
+          ${p.locked ? `<span class="lab-lock" aria-label="Classified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>` : ""}
+        </div>
+        <h3 class="lab-name">${esc(p.codename)}</h3>
+        <span class="lab-cat">${esc(p.category)}</span>
+        <p class="lab-desc${p.locked ? " redacted" : ""}">${esc(p.desc)}</p>
+        <div class="lab-progress"><i style="width:${Math.max(0, Math.min(100, +p.progress || 0))}%"></i></div>
+        <span class="lab-pct">${p.locked ? "Stage withheld" : (+p.progress || 0) + "% through our validation process"}</span>
+      </article>`).join("") + `</div>`;
   }
 
   /* ---------- reveal on scroll ---------- */
@@ -507,6 +527,6 @@ Capital: ${d.capital}`;
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    buildHeader(); buildFooter(); bindConfig(); initTheme(); reveal(); contactForm(); chartDefaults(); heroChart(); performancePage(); calculator(); tierTable(); strategyStats(); mt5Cards(); regForm(); themeCharts();
+    buildHeader(); buildFooter(); bindConfig(); initTheme(); reveal(); contactForm(); chartDefaults(); heroChart(); performancePage(); calculator(); tierTable(); labSection(); strategyStats(); mt5Cards(); regForm(); themeCharts();
   });
 })();

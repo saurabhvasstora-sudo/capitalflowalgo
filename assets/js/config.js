@@ -19,7 +19,8 @@ window.CFA_CONFIG = {
   officeHours:  "Monday – Friday, 9:00 – 18:00 (GST, UTC+4)",
 
   /* --- Contact ---------------------------------------------------- */
-  email:        "ajjayy@capitalflowalgo.com",       // GoDaddy professional email — activate it in the GoDaddy dashboard (Email → Activate)
+  email:        "capitalflowalgo@gmail.com",        // primary — enquiries and form submissions go here
+  emailAlt:     "ajjayy@capitalflowalgo.com",       // domain email (activate in GoDaddy → Email → Activate), shown as a second contact
   whatsapp:     "919762995635",                     // digits only, country code first, no + or spaces
   phoneDisplay: "+91 97629 95635",                  // how the number appears on screen
   whatsappGreeting: "Hi Capital Flow Algo, I'd like to know more about your trading algorithms.",
@@ -73,6 +74,49 @@ window.CFA_CONFIG = {
   ],
   returnRangeLabel: "3 – 8%",                       // overall range shown in headlines
   tierThresholdLabel: "$10,000",                    // where the higher tier begins
+
+  /* --- Innovation lab / upcoming systems --------------------------
+     Shown in the "What we're building next" section. Set `locked: true`
+     to show a project as classified (name and description blurred out).
+     Replace these with your real projects whenever you want.          */
+  lab: {
+    headline: "The systems we haven't shown anyone yet.",
+    intro: "Everything we run today started as a project in this list. What sits here now is the next generation — models we are building, testing and stress-running on our own capital before a single client sees them. Some will reach the platform this year. Some will never leave the lab. That is exactly how it should be.",
+    projects: [
+      {
+        codename: "Project Meridian",
+        category: "Multi-commodity arbitrage",
+        stage:    "Live testing",
+        progress: 70,
+        locked:   false,
+        desc:     "Extends our gold basis engine across silver, oil and selected metals simultaneously, rotating capital to wherever the spread is widest that hour."
+      },
+      {
+        codename: "Project Tidal",
+        category: "Market-neutral yield",
+        stage:    "In development",
+        progress: 45,
+        locked:   false,
+        desc:     "Captures perpetual-futures funding payments across multiple venues at once — a return stream that moves independently of everything else we run."
+      },
+      {
+        codename: "Project Sentinel",
+        category: "Adaptive risk layer",
+        stage:    "Research",
+        progress: 30,
+        locked:   false,
+        desc:     "Not a strategy — a layer that sits above all of them, reading market regime in real time and scaling every position down before volatility arrives rather than after."
+      },
+      {
+        codename: "Classified",
+        category: "Undisclosed",
+        stage:    "Concept",
+        progress: 15,
+        locked:   true,
+        desc:     "Details withheld while the model is proven on our own capital. Early-access clients are briefed first."
+      }
+    ]
+  },
 
   /* --- Contact form (Web3Forms — free, no backend) ---------------
      1. Go to https://web3forms.com, enter the email above, get an Access Key.
