@@ -141,6 +141,13 @@ window.CFA_CONFIG = {
     ]
   },
 
+  /* --- Google Analytics 4 ------------------------------------------
+     1. Go to analytics.google.com -> Admin -> Create property
+     2. Platform: Web. Enter https://capitalflowalgo.com
+     3. Copy the Measurement ID (looks like G-XXXXXXXXXX) and paste below.
+     Leave empty and no tracking script loads at all.                  */
+  ga4Id: "",
+
   /* --- Contact form (Web3Forms — free, no backend) ---------------
      1. Go to https://web3forms.com, enter the email above, get an Access Key.
      2. Paste the key here. Submissions arrive in that inbox.

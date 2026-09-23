@@ -35,6 +35,37 @@
     x: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 3h3.1l-6.8 7.8L21.8 21h-6.3l-4.9-6.4L5 21H1.9l7.3-8.3L1.5 3h6.4l4.4 5.9L17.5 3zm-1.1 16.2h1.7L6.9 4.7H5.1l11.3 14.5z"/></svg>`
   };
 
+  /* ---------- analytics (loads only if an ID is configured) ---------- */
+  function analytics() {
+    const id = C.ga4Id;
+    if (!id || !/^G-[A-Z0-9]+$/i.test(id)) return;
+    const s1 = document.createElement("script");
+    s1.async = true; s1.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
+    document.head.appendChild(s1);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag("js", new Date());
+    gtag("config", id, { anonymize_ip: true });
+
+    // Track the actions that actually matter for this business
+    const track = (name, params) => gtag("event", name, params || {});
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a");
+      if (!a) return;
+      const href = a.getAttribute("href") || "";
+      if (href.includes("wa.me")) track("whatsapp_click", { link_url: href });
+      else if (href.startsWith("tel:")) track("phone_click");
+      else if (href.startsWith("mailto:")) track("email_click");
+      else if (href.includes("open-account")) track("open_account_click");
+      else if (href.includes("qbexmarket.com") || href.includes("newera365.com")) track("broker_signup_click", { link_url: href });
+    });
+    const rf = $("#regForm");
+    if (rf) rf.addEventListener("submit", () => track("registration_submitted"));
+    const cf = $("#contactForm");
+    if (cf) cf.addEventListener("submit", () => track("enquiry_submitted"));
+  }
+
   /* ---------- header ---------- */
   function buildHeader() {
     const host = $("#site-header");
@@ -46,11 +77,12 @@
       ["performance.html", "Performance"],
       ["how-it-works.html", "How It Works"],
       ["calculator.html", "Calculator"],
+      ["blog.html", "Learn"],
       ["faq.html", "FAQ"],
       ["about.html", "About"],
       ["contact.html", "Contact"]
     ];
-    const isActive = (href) => page === href || (href === "strategies.html" && page.startsWith("strategy-"));
+    const isActive = (href) => page === href || (href === "strategies.html" && page.startsWith("strategy-")) || (href === "blog.html" && page.startsWith("blog-"));
     host.className = "site-header";
     host.innerHTML = `
       <div class="container nav">
@@ -108,6 +140,7 @@
               <li><a href="how-it-works.html">How It Works</a></li>
               <li><a href="open-account.html">Open an Account</a></li>
               <li><a href="performance.html">Track Record</a></li>
+              <li><a href="blog.html">Learn</a></li>
               <li><a href="faq.html">FAQ</a></li>
               <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -544,6 +577,6 @@ Capital: ${d.capital}`;
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    buildHeader(); buildFooter(); bindConfig(); initTheme(); reveal(); contactForm(); chartDefaults(); heroChart(); performancePage(); calculator(); tierTable(); labSection(); partnersSection(); strategyStats(); mt5Cards(); regForm(); themeCharts();
+    buildHeader(); buildFooter(); bindConfig(); initTheme(); analytics(); reveal(); contactForm(); chartDefaults(); heroChart(); performancePage(); calculator(); tierTable(); labSection(); partnersSection(); strategyStats(); mt5Cards(); regForm(); themeCharts();
   });
 })();

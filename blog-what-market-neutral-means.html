@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Does 'Market Neutral' Actually Mean? | Capital Flow Algo</title>
+<meta name="description" content="Market neutral is one of the most misused phrases in trading. Here is what it genuinely means, how to tell whether a strategy really is, and what it does not protect you from.">
+<meta property="og:title" content="What Does 'Market Neutral' Actually Mean? | Capital Flow Algo">
+<meta property="og:description" content="Market neutral is one of the most misused phrases in trading. Here is what it genuinely means, how to tell whether a strategy really is, and what it does not protect you from.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://capitalflowalgo.com/assets/img/og-image.png">
+<meta property="og:url" content="https://capitalflowalgo.com/blog-what-market-neutral-means.html">
+<meta property="og:site_name" content="Capital Flow Algo">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#070A12">
+<meta name="author" content="Capital Flow Algo">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://capitalflowalgo.com/blog-what-market-neutral-means.html">
+<link rel="stylesheet" href="assets/css/style.css?v=bc3c8f7c">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"What does “market neutral” actually mean?","description":"Market neutral is one of the most misused phrases in trading. Here is what it genuinely means, how to tell whether a strategy really is, and what it does not protect you from.","datePublished":"2026-09-23","dateModified":"2026-09-23","author":{"@type":"Organization","name":"Capital Flow Algo","url":"https://capitalflowalgo.com/"},"publisher":{"@type":"Organization","name":"Capital Flow Algo","logo":{"@type":"ImageObject","url":"https://capitalflowalgo.com/assets/img/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://capitalflowalgo.com/blog-what-market-neutral-means.html"},"image":"https://capitalflowalgo.com/assets/img/og-image.png"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://capitalflowalgo.com/"},{"@type":"ListItem","position":2,"name":"Learn","item":"https://capitalflowalgo.com/blog.html"},{"@type":"ListItem","position":3,"name":"What does “market neutral” actually mean?","item":"https://capitalflowalgo.com/blog-what-market-neutral-means.html"}]}]}</script>
+</head>
+<body>
+<header id="site-header"></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="blog.html">Learn</a> / Article</div>
+    <span class="tag grey mb-2">Concepts</span>
+    <h1>What does “market neutral” actually mean?</h1>
+    <p class="blog-meta mt-2">Capital Flow Algo &nbsp;·&nbsp; 5 min read</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <article class="prose blog-body">
+
+<p class="lead">"Market neutral" is one of the most misused phrases in trading. It is frequently presented as a synonym for "safe", which it is not. Here is what it genuinely means, how to check whether a strategy really is one, and — just as importantly — what it does not protect you from.</p>
+
+<h2>The actual definition</h2>
+<p>A market-neutral strategy is one whose profit does not depend on whether the market goes up or down. That is the whole claim. It is a statement about <em>what drives</em> the return, not about how large the risk is.</p>
+<p>A directional strategy makes money when it correctly predicts direction. A market-neutral strategy removes direction from the equation entirely and earns from something else — usually a price relationship between two instruments that are closely linked.</p>
+
+<h2>How the direction gets cancelled out</h2>
+<p>The mechanism is simpler than the name suggests: you hold two offsetting positions in the same underlying asset at the same time.</p>
+<p>In spot–futures arbitrage, you buy gold at the spot price and simultaneously sell a gold futures contract. If gold rises, the first position gains and the second loses. If gold falls, the reverse. Whatever gold does, the two movements largely cancel, and what remains is the price gap you locked in when you opened both sides.</p>
+<p>Gold could double or halve. The arithmetic of the outcome is unchanged. That is what "neutral" refers to.</p>
+
+<h2>What it does <em>not</em> mean</h2>
+<p>This is where the phrase gets abused. Market neutral does <strong>not</strong> mean:</p>
+<ul>
+  <li><strong>No risk.</strong> The relationship you are trading can move against you. The gap can narrow when you expected it to widen.</li>
+  <li><strong>No losing months.</strong> When spreads compress, returns fall — and after costs a month can finish negative.</li>
+  <li><strong>Protection from your broker failing.</strong> Counterparty risk sits outside the strategy entirely and no hedge addresses it.</li>
+  <li><strong>Protection from execution problems.</strong> If the two legs do not fill together, you are briefly unhedged — and "briefly" is enough in a fast market.</li>
+</ul>
+<p>What you are actually buying is the removal of <em>one specific risk</em> — direction — which happens to be the risk that causes most retail traders to lose money. That is genuinely valuable. It is not the same as safety.</p>
+
+<h2>Three questions that expose a fake</h2>
+<p>Plenty of strategies are marketed as market neutral without being anything of the sort. Three questions settle it quickly:</p>
+<ol>
+  <li><strong>"What are the two offsetting positions?"</strong> A real market-neutral strategy has a specific answer — long this, short that. If the answer is vague, or there is only one position, it is directional trading with better branding.</li>
+  <li><strong>"Show me the trade history."</strong> In a genuine arbitrage account, trades appear in pairs, opened within moments of each other, on opposite sides. A stream of single-direction trades is not arbitrage.</li>
+  <li><strong>"What happened in your worst month, and why?"</strong> An honest operator explains spread compression or an execution problem. Someone who says "it never has a bad month" is describing a fantasy.</li>
+</ol>
+
+<h2>Where it fits in a portfolio</h2>
+<p>Market-neutral strategies tend to produce steadier, lower returns than directional ones. That is the trade-off, and it is a deliberate one. They suit capital you want working consistently rather than capital you are willing to gamble, and they behave differently from equities and property — which is the point of holding something uncorrelated.</p>
+<p>They are not a replacement for an emergency fund, and they are not a place for money you will need next month.</p>
+
+    </article>
+
+    <div class="cta-band mt-4 reveal">
+      <h2>See how our arbitrage engine works</h2>
+      <p>We publish read-only logins to our own live trading accounts. Check every trade yourself before you speak to us.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="strategy-arbitrage.html">See how our arbitrage engine works</a>
+        <a class="btn btn-outline" href="open-account.html">Open an account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow">Keep reading</span><h2>More from the Learn section</h2></div>
+    <div class="grid grid-3 reveal"><a class="card blog-card" href="blog-what-is-spot-futures-arbitrage.html"><span class="tag grey">Strategy explained</span><h3>What is spot–futures arbitrage?</h3><p>Buy gold today, sell a gold contract for a future date at a higher price, keep the difference. Here is how that actually works — and where it can go wrong.</p><span class="blog-meta">6 min read</span></a><a class="card blog-card" href="blog-how-to-verify-an-algo-trading-provider.html"><span class="tag grey">Investor protection</span><h3>How to check if an algo trading provider is legitimate</h3><p>Before you give anyone access to your money, run these nine tests. They take an afternoon and they will save you from almost every scam in this industry.</p><span class="blog-meta">8 min read</span></a><a class="card blog-card" href="blog-investor-password-vs-master-password.html"><span class="tag grey">Account security</span><h3>Investor password vs master password: the difference that protects your money</h3><p>Every MT5 account has two passwords. Handing over the wrong one is the most common, and most expensive, mistake new clients make.</p><span class="blog-meta">4 min read</span></a></div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script defer src="assets/js/config.js?v=bc3c8f7c"></script>
+<script defer src="assets/js/performance-data.js?v=bc3c8f7c"></script>
+<script defer src="assets/js/main.js?v=bc3c8f7c"></script>
+</body>
+</html>

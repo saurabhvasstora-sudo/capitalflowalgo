@@ -191,10 +191,10 @@ strong{color:var(--text);font-weight:600}
 .brand-text span{font-size:.62rem;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-top:3px}
 .nav-links{display:flex;align-items:center;gap:2px;list-style:none}
 .nav-links a{
-  padding:9px 13px;border-radius:999px;font-size:.9rem;color:var(--muted);transition:.2s;white-space:nowrap;
+  padding:9px 11px;border-radius:999px;font-size:.88rem;color:var(--muted);transition:.2s;white-space:nowrap;
 }
 .nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--gold-dim)}
-.nav-cta{display:flex;align-items:center;gap:10px}
+.nav-cta{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .nav-toggle{
   display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--border);
   background:transparent;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;
@@ -203,7 +203,7 @@ strong{color:var(--text);font-weight:600}
 .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
 .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-@media(max-width:1200px){
+@media(max-width:1340px){
   .nav-toggle{display:flex}
   .nav-cta .btn-outline{display:none}
   .nav-links{
@@ -215,7 +215,7 @@ strong{color:var(--text);font-weight:600}
   .nav-links a{padding:14px 16px;font-size:1.05rem;border-radius:12px}
   .nav-links .nav-mobile-cta{margin-top:16px;display:flex;flex-direction:column;gap:10px}
 }
-@media(min-width:1201px){.nav-mobile-cta{display:none}}
+@media(min-width:1341px){.nav-mobile-cta{display:none}}
 @media(max-width:480px){.nav-cta .btn-primary{display:none}}
 
 .section-alt{background:var(--tint-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -487,6 +487,18 @@ table.compare tbody tr:hover td.us{background:rgba(217,178,74,.18)}
 .spec div:last-child{border-bottom:0}
 .spec div span:first-child{color:var(--dim)}
 .spec div span:last-child{text-align:right;font-weight:500}
+
+/* ---------- Blog ---------- */
+.blog-card{display:block}
+.blog-card h3{margin:12px 0 10px;font-size:1.15rem}
+.blog-card p{font-size:.93rem}
+.blog-meta{display:block;margin-top:14px;font-size:.82rem;color:var(--dim);letter-spacing:.02em}
+.blog-body{max-width:760px;margin:0 auto}
+.blog-body h2{font-size:1.45rem;margin:38px 0 14px}
+.blog-body p,.blog-body li{font-size:1.02rem;line-height:1.75}
+.blog-body .lead{font-size:1.14rem;color:var(--text);border-left:3px solid var(--gold);padding-left:20px;margin-bottom:28px}
+.blog-body ol{padding-left:22px;margin-bottom:16px}
+.blog-body table{min-width:auto}
 
 /* ---------- Partners ---------- */
 .partner-card:hover{transform:none}
