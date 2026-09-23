@@ -477,6 +477,35 @@ tfoot td{font-weight:600;background:var(--tint)}
 .spec div span:first-child{color:var(--dim)}
 .spec div span:last-child{text-align:right;font-weight:500}
 
+/* ---------- Open-account page ---------- */
+.step-badge{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--muted);font-weight:500}
+.step-badge span{
+  display:inline-block;padding:4px 12px;border-radius:999px;background:var(--gold-dim);color:var(--gold);
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+}
+#platformCard{transition:border-color .3s ease}
+#platformCard.unlocked{border-color:rgba(217,178,74,.45)}
+.locked-box{
+  display:flex;align-items:center;gap:12px;padding:22px;border:1px dashed var(--border-strong);
+  border-radius:var(--radius-sm);color:var(--dim);font-size:.92rem;background:var(--tint);
+}
+.locked-box svg{width:26px;height:26px;flex-shrink:0}
+.platform-btn{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:18px 20px;border-radius:var(--radius-sm);border:1px solid var(--border-strong);
+  background:var(--tint);margin-bottom:12px;transition:.2s;
+}
+.platform-btn:hover{transform:translateY(-2px);border-color:var(--gold)}
+.platform-btn.primary{
+  background:linear-gradient(135deg,var(--gold-2),var(--gold));border-color:transparent;color:#1A1400;
+  box-shadow:0 10px 26px rgba(217,178,74,.25);
+}
+.platform-btn.primary small{color:rgba(26,20,0,.75)}
+.pb-text{display:flex;flex-direction:column;gap:3px}
+.pb-text b{font-family:var(--font-head);font-size:1.02rem}
+.pb-text small{font-size:.84rem;color:var(--muted)}
+.pb-arrow{font-size:1.2rem;flex-shrink:0}
+
 /* ---------- Check list ---------- */
 .broker-points{list-style:none;display:grid;gap:8px}
 .broker-points li{display:flex;gap:10px;font-size:.92rem;color:var(--muted)}

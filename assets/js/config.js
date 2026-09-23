@@ -20,8 +20,8 @@ window.CFA_CONFIG = {
 
   /* --- Contact ---------------------------------------------------- */
   email:        "ajjayy@capitalflowalgo.com",       // GoDaddy professional email — activate it in the GoDaddy dashboard (Email → Activate)
-  whatsapp:     "971500000000",                     // TODO: digits only, with country code, no + or spaces
-  phoneDisplay: "+971 50 000 0000",                 // TODO: how the number should look on screen
+  whatsapp:     "919762995635",                     // digits only, country code first, no + or spaces
+  phoneDisplay: "+91 97629 95635",                  // how the number appears on screen
   whatsappGreeting: "Hi Capital Flow Algo, I'd like to know more about your trading algorithms.",
 
   /* --- Social ----------------------------------------------------- */
@@ -35,6 +35,22 @@ window.CFA_CONFIG = {
      Brokers are deliberately not named on the site. This phrase is used
      inside sentences ("...your own account with a regulated MT5 broker"). */
   broker: { name: "a regulated MT5 broker", regulator: "regulated", url: "" },
+
+  /* --- Account-opening links (our introducing-broker links) ----------
+     Shown on open-account.html after the visitor submits their details.
+     Order matters: the first one is highlighted as "recommended". */
+  accountLinks: [
+    {
+      label:    "Open Account — Platform A",
+      subtitle: "Recommended for the Gold Arbitrage strategy",
+      url:      "https://app.qbexmarket.com/signup?ibcode=901000007733"
+    },
+    {
+      label:    "Open Account — Platform B",
+      subtitle: "Recommended for the Forex Multi-Pair strategy",
+      url:      "https://trade.newera365.com/client/register/6a77504214ab5"
+    }
+  ],
 
   platform: "MetaTrader 5 (MT5)",
   logoMark: "assets/img/logo-mark.png",             // icon only (used in the header next to the wordmark)

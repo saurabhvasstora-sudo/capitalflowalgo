@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Your Account — Capital Flow Algo</title>
+<meta name="description" content="Register with Capital Flow Algo and open your own trading account in minutes. Enter your details, choose your platform, and we'll connect the algorithm to your account.">
+<meta property="og:image" content="https://www.capitalflowalgo.com/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Open Account</div>
+    <span class="eyebrow">Get started</span>
+    <h1>Open your account in minutes.</h1>
+    <p class="lead">Fill in your details below, then open your trading account on the platform we recommend for you. The account is in <strong>your own name</strong> — you deposit directly with the platform, and only you can withdraw. We simply connect the algorithm once it's funded.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="calc" style="grid-template-columns:1fr 1fr">
+
+      <!-- ============ STEP 1 : registration form ============ -->
+      <div class="reveal">
+        <form id="regForm" class="form-card" novalidate>
+          <div class="step-badge"><span>Step 1</span> Your details</div>
+          <h3 class="mb-3" style="margin-top:10px">Register with us</h3>
+          <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" autocomplete="off">
+
+          <div class="field">
+            <label for="rname">Full name *</label>
+            <input id="rname" name="name" type="text" required autocomplete="name" placeholder="As it appears on your passport / Emirates ID">
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="rphone">Phone / WhatsApp number *</label>
+              <input id="rphone" name="phone" type="tel" required autocomplete="tel" placeholder="+971 50 123 4567">
+            </div>
+            <div class="field">
+              <label for="rage">Age *</label>
+              <input id="rage" name="age" type="number" min="18" max="100" required inputmode="numeric" placeholder="e.g. 32">
+            </div>
+          </div>
+          <div class="field">
+            <label for="remail">Email address *</label>
+            <input id="remail" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="rstrategy">Strategy you're interested in *</label>
+              <select id="rstrategy" name="strategy" required>
+                <option value="Gold Spot-Futures Arbitrage">Gold Spot–Futures Arbitrage (5–8% / month)</option>
+                <option value="Forex Multi-Pair Algo">Forex Multi-Pair Algo (15–20% / month)</option>
+                <option value="Both">Both / not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="rcapital">Starting capital *</label>
+              <select id="rcapital" name="capital" required>
+                <option value="$1,000 – $5,000">$1,000 – $5,000</option>
+                <option value="$5,000 – $10,000">$5,000 – $10,000</option>
+                <option value="$10,000 – $25,000">$10,000 – $25,000</option>
+                <option value="$25,000 – $50,000">$25,000 – $50,000</option>
+                <option value="$50,000+">$50,000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label class="checkbox"><input type="checkbox" name="age_confirm" value="yes" required> I confirm I am <strong>18 years or older</strong> and legally permitted to trade in my country of residence.</label>
+          </div>
+          <div class="field">
+            <label class="checkbox"><input type="checkbox" name="consent" value="yes" required> I have read the <a href="risk-disclosure.html" class="gold" target="_blank">Risk Disclosure</a> and understand that trading carries risk, returns are not guaranteed, and past performance does not guarantee future results.</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Continue to account opening →</button>
+          <p class="form-msg" id="regMsg" role="status"></p>
+          <p class="small muted mt-2">Your details are used only to assist your onboarding — see our <a href="privacy.html" class="gold">Privacy Policy</a>. We never ask for passwords, card numbers or bank details on this website.</p>
+        </form>
+      </div>
+
+      <!-- ============ STEP 2 : platform links (revealed after step 1) ============ -->
+      <div class="reveal">
+        <div class="form-card" id="platformCard">
+          <div class="step-badge"><span>Step 2</span> Open your trading account</div>
+          <h3 class="mb-2" style="margin-top:10px">Choose your platform</h3>
+
+          <div id="platformLocked">
+            <p class="mb-3">Complete Step 1 and your account-opening links appear here. We'll also message you on WhatsApp to guide you through the signup screens.</p>
+            <div class="locked-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              <span>Links unlock after you register</span>
+            </div>
+          </div>
+
+          <div id="platformLinks" style="display:none">
+            <p class="mb-3">Click your platform below to create your trading account. Have your passport or Emirates ID ready — the platform runs its own identity check (KYC).</p>
+            <div id="platformButtons"></div>
+            <div class="notice info mt-3" style="margin-bottom:0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+              <span>Not sure which one to pick? <a data-href="wa" data-msg="Hi Capital Flow Algo, I've just registered. Which platform should I open my account with?" href="#" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Ask us on WhatsApp</a> and we'll tell you in a minute.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ What happens next ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">After you register</span>
+      <h2>What happens next</h2>
+      <p class="lead mt-2" style="margin-left:auto;margin-right:auto">Four short steps, and we're with you on WhatsApp for every one of them.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><h3>Open the account</h3><p>Sign up on the platform using the link above. It takes a few minutes and is fully online — no paperwork.</p></div>
+      <div class="step"><h3>Verify your identity</h3><p>Upload your passport or Emirates ID to the platform. This is the platform's own check, not ours. Usually approved within a day.</p></div>
+      <div class="step"><h3>Deposit your capital</h3><p>Fund the account directly with the platform — card, bank transfer or crypto. Minimum <strong data-cfg="minimum.forex">$1,000</strong>. The money stays yours.</p></div>
+      <div class="step"><h3>We switch on the algo</h3><p>Send us your account number on WhatsApp. We connect the algorithm with trading-only access and it starts working — you watch it live in MT5.</p></div>
+    </div>
+
+    <div class="notice mt-4 reveal" style="max-width:900px;margin-left:auto;margin-right:auto">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      <span><strong>Important:</strong> never send money to Capital Flow Algo. You deposit only into your own trading account, through the platform's own official payment page. We never ask for your withdrawal password, card details or bank login — and neither should anyone claiming to be us.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Reassurance ============ -->
+<section class="section-tight">
+  <div class="container">
+    <div class="trust reveal">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+        <div><b>The account is yours</b><span>Opened in your name, funded by you, withdrawn by you. We only place trades.</span></div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><b>No lock-in</b><span>Stop the algorithm or withdraw your money whenever you want.</span></div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 14l3-3 2 2 5-5M8 20h8"/></svg>
+        <div><b>Watch it live</b><span>Every trade visible in the free MT5 app on your phone, 24/7.</span></div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+        <div><b>Real people, real support</b><span>Call or WhatsApp us on <a data-href="tel" href="#" class="gold"><span data-cfg="phoneDisplay">+91 97629 95635</span></a>.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Questions before you sign up?</h2>
+      <p>Talk to us first — no pressure, no obligation. We'd rather you understood everything before you put in a dirham.</p>
+      <div class="actions">
+        <a class="btn btn-wa" data-href="wa" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a class="btn btn-outline" data-href="tel" href="#">Call <span data-cfg="phoneDisplay">+91 97629 95635</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/performance-data.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

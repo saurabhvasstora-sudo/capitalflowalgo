@@ -58,13 +58,14 @@
         <ul class="nav-links" id="navLinks">
           ${links.map(([h, t]) => `<li><a href="${h}" class="${isActive(h) ? "active" : ""}">${t}</a></li>`).join("")}
           <li class="nav-mobile-cta">
-            <a class="btn btn-primary" href="${callLink()}" target="_blank" rel="noopener">Book a Call</a>
+            <a class="btn btn-primary" href="open-account.html">Open Account</a>
+            <a class="btn btn-outline" href="tel:+${esc(C.whatsapp)}">Call ${esc(C.phoneDisplay)}</a>
             <a class="btn btn-wa" href="${waLink()}" target="_blank" rel="noopener">${ICONS.wa} WhatsApp Us</a>
           </li>
         </ul>
         <div class="nav-cta">
           <a class="btn btn-outline btn-sm" href="${waLink()}" target="_blank" rel="noopener">${ICONS.wa} WhatsApp</a>
-          <a class="btn btn-primary btn-sm" href="${callLink()}" target="_blank" rel="noopener">Book a Call</a>
+          <a class="btn btn-primary btn-sm" href="open-account.html">Open Account</a>
           <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Light / dark mode">${ICONS.sun}</button>
           <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
         </div>
@@ -105,6 +106,7 @@
             <ul>
               <li><a href="about.html">About Us</a></li>
               <li><a href="how-it-works.html">How It Works</a></li>
+              <li><a href="open-account.html">Open an Account</a></li>
               <li><a href="performance.html">Track Record</a></li>
               <li><a href="faq.html">FAQ</a></li>
               <li><a href="contact.html">Contact</a></li>
@@ -254,6 +256,67 @@
     });
   }
 
+  /* ---------- registration form (open-account.html) ---------- */
+  function regForm() {
+    const form = $("#regForm");
+    if (!form) return;
+    const msg = $("#regMsg"), btn = $("button[type=submit]", form);
+
+    const showPlatforms = () => {
+      const links = C.accountLinks || [];
+      if (!links.length) return;
+      $("#platformButtons").innerHTML = links.map((l, i) => `
+        <a class="platform-btn ${i === 0 ? "primary" : ""}" href="${esc(l.url)}" target="_blank" rel="noopener">
+          <span class="pb-text"><b>${esc(l.label)}</b><small>${esc(l.subtitle || "")}</small></span>
+          <span class="pb-arrow" aria-hidden="true">↗</span>
+        </a>`).join("");
+      $("#platformLocked").style.display = "none";
+      $("#platformLinks").style.display = "";
+      $("#platformCard").classList.add("unlocked");
+      $("#platformCard").scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      msg.className = "form-msg";
+      const d = Object.fromEntries(new FormData(form).entries());
+      if (!d.name || !d.phone || !d.email || !d.age) { msg.textContent = "Please fill in your name, phone, email and age."; msg.className = "form-msg err"; return; }
+      if (+d.age < 18) { msg.textContent = "You must be 18 or older to open a trading account."; msg.className = "form-msg err"; return; }
+      if (!d.age_confirm || !d.consent) { msg.textContent = "Please tick both confirmation boxes to continue."; msg.className = "form-msg err"; return; }
+
+      const summary = `NEW REGISTRATION — ${d.name}
+Phone: ${d.phone}
+Email: ${d.email}
+Age: ${d.age}
+Strategy: ${d.strategy}
+Capital: ${d.capital}`;
+      if (!C.web3formsKey) {
+        window.open(waLink(summary), "_blank", "noopener");
+        msg.textContent = "Details sent. Your account-opening links are now unlocked below.";
+        msg.className = "form-msg ok";
+        showPlatforms(); return;
+      }
+      btn.disabled = true; btn.textContent = "Sending…";
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ access_key: C.web3formsKey, subject: `New registration — ${d.name} — ${d.strategy}`, from_name: C.brandName + " Website", ...d, botcheck: undefined })
+        });
+        const out = await res.json();
+        if (!out.success) throw new Error(out.message || "Failed");
+        msg.textContent = "Registered. Your account-opening links are now unlocked below.";
+        msg.className = "form-msg ok";
+      } catch (e) {
+        window.open(waLink(summary), "_blank", "noopener");
+        msg.textContent = "Sent via WhatsApp. Your account-opening links are unlocked below.";
+        msg.className = "form-msg ok";
+      } finally {
+        btn.disabled = false; btn.textContent = "Continue to account opening →";
+        showPlatforms();
+      }
+    });
+  }
+
   /* ---------- chart defaults ---------- */
   function chartDefaults() {
     if (!window.Chart) return;
@@ -397,6 +460,6 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    buildHeader(); buildFooter(); bindConfig(); initTheme(); reveal(); contactForm(); chartDefaults(); heroChart(); performancePage(); calculator(); strategyStats(); mt5Cards(); themeCharts();
+    buildHeader(); buildFooter(); bindConfig(); initTheme(); reveal(); contactForm(); chartDefaults(); heroChart(); performancePage(); calculator(); strategyStats(); mt5Cards(); regForm(); themeCharts();
   });
 })();
