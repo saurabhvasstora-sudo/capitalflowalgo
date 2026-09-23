@@ -350,6 +350,17 @@ th.num{text-align:right}
 td.pos{color:var(--green)}td.neg{color:var(--red)}
 tfoot td{font-weight:600;background:var(--tint)}
 
+/* ---------- Comparison table ---------- */
+table.compare{min-width:760px}
+table.compare th.us,table.compare td.us{background:var(--gold-dim);border-left:1px solid rgba(217,178,74,.3);border-right:1px solid rgba(217,178,74,.3)}
+table.compare th.us{color:var(--gold);font-size:.8rem}
+table.compare td{vertical-align:top;font-size:.92rem}
+table.compare td:first-child{width:23%}
+table.compare td:last-child{color:var(--dim)}
+table.compare tbody tr:hover td{background:rgba(255,255,255,.02)}
+table.compare tbody tr:hover td.us{background:rgba(217,178,74,.18)}
+:root[data-theme="light"] table.compare tbody tr:hover td{background:rgba(12,22,44,.02)}
+
 /* ---------- Metric tiles ---------- */
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
 @media(max-width:960px){.metrics{grid-template-columns:repeat(2,1fr)}}

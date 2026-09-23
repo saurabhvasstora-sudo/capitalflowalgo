@@ -8,7 +8,7 @@ window.CFA_CONFIG = {
 
   /* --- Company identity ------------------------------------------- */
   brandName:   "Capital Flow Algo",
-  legalName:   "Capital Flow Algo",                 // TODO: exact name on trade licence, e.g. "Capital Flow Algo FZE"
+  legalName:   "Capital Flow Algo",                 // trading name used across the site and legal pages
   tagline:     "Institutional-grade trading algorithms, running in your own account.",
   domain:      "https://www.capitalflowalgo.com",
 
@@ -158,6 +158,6 @@ window.CFA_CONFIG = {
   fxblueUrl:   "",                                  // optional verified-account link
 
   /* --- Misc -------------------------------------------------------- */
-  foundedYear: 2024,                                // TODO
+  foundedYear: "",                                  // leave empty to hide the "Founded" row on the About page
   calendlyUrl: ""                                   // optional: booking link for "Book a call"; falls back to WhatsApp
 };

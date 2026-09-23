@@ -136,7 +136,7 @@
           <strong style="color:var(--muted)">Risk warning:</strong> Trading foreign exchange, derivatives and digital assets carries a high level of risk and may not be suitable for all investors. Past performance, including the historical monthly figures shown on this website, is not a reliable indicator of future results and does not constitute a guarantee of any kind. Returns can be negative, and you could lose some or all of your capital. Nothing on this website constitutes investment, legal or tax advice, or an offer or solicitation in any jurisdiction where such an offer would be unlawful. Client funds are held in the client's own account with a third-party broker; ${esc(C.brandName)} does not take custody of client money. Please read our full <a href="risk-disclosure.html" style="color:var(--gold)">Risk Disclosure</a> before engaging our services.
         </div>
         <div class="footer-bottom">
-          <span>© <span id="year"></span> ${esc(C.legalName)}. Registered in Dubai Silicon Oasis, Dubai, UAE. All rights reserved.</span>
+          <span>© <span id="year"></span> ${esc(C.legalName)}. All rights reserved.</span>
           <span><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Service</a> &nbsp;·&nbsp; <a href="risk-disclosure.html">Risk Disclosure</a></span>
         </div>
       </div>`;
