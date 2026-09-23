@@ -75,6 +75,27 @@ window.CFA_CONFIG = {
   returnRangeLabel: "3 – 8%",                       // overall range shown in headlines
   tierThresholdLabel: "$10,000",                    // where the higher tier begins
 
+  /* --- Broker partnerships ------------------------------------------
+     Facts you can evidence today. When a broker sends an official signed
+     confirmation letter, save it to assets/docs/ and put the filename in
+     `letter` — a "View confirmation letter" button then appears.        */
+  partners: [
+    {
+      name:     "QBEX Market",
+      role:     "Introducing partner",
+      detail:   "Registered introducing partner, IB code 901000007733. Clients we refer open their account directly with QBEX Market, in their own name.",
+      url:      "https://www.qbexmarket.com/",
+      letter:   ""
+    },
+    {
+      name:     "Newera Capital",
+      role:     "Introducing partner",
+      detail:   "Registered introducing partner. Clients we refer open their account directly with Newera Capital, in their own name, through our partner registration link.",
+      url:      "https://www.newera365.com/",
+      letter:   ""
+    }
+  ],
+
   /* --- Innovation lab / upcoming systems --------------------------
      Shown in the "What we're building next" section. Set `locked: true`
      to show a project as classified (name and description blurred out).

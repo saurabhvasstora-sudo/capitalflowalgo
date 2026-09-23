@@ -219,6 +219,22 @@
     });
   }
 
+  /* ---------- partners: <div data-partners></div> ---------- */
+  function partnersSection() {
+    const host = $("[data-partners]");
+    if (!host || !Array.isArray(C.partners)) return;
+    host.innerHTML = `<div class="grid grid-2">` + C.partners.map((p) => `
+      <article class="card partner-card">
+        <span class="partner-role">${esc(p.role)}</span>
+        <h3>${esc(p.name)}</h3>
+        <p>${esc(p.detail)}</p>
+        <div class="mt-3" style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-outline btn-sm" href="${esc(p.url)}" target="_blank" rel="noopener">Visit ${esc(p.name)} ↗</a>
+          ${p.letter ? `<a class="btn btn-primary btn-sm" href="assets/docs/${esc(p.letter)}" target="_blank" rel="noopener">View confirmation letter</a>` : `<span class="partner-pending">Official confirmation letter requested</span>`}
+        </div>
+      </article>`).join("") + `</div>`;
+  }
+
   /* ---------- innovation lab: <div data-lab></div> ---------- */
   function labSection() {
     const host = $("[data-lab]");
@@ -528,6 +544,6 @@ Capital: ${d.capital}`;
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    buildHeader(); buildFooter(); bindConfig(); initTheme(); reveal(); contactForm(); chartDefaults(); heroChart(); performancePage(); calculator(); tierTable(); labSection(); strategyStats(); mt5Cards(); regForm(); themeCharts();
+    buildHeader(); buildFooter(); bindConfig(); initTheme(); reveal(); contactForm(); chartDefaults(); heroChart(); performancePage(); calculator(); tierTable(); labSection(); partnersSection(); strategyStats(); mt5Cards(); regForm(); themeCharts();
   });
 })();
