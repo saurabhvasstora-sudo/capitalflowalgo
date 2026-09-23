@@ -1,3 +1,6 @@
 .DS_Store
 Thumbs.db
 .claude/
+
+# Private notes — never committed
+PRIVATE-accounts.md

@@ -202,7 +202,7 @@
   function mt5Cards() {
     const hosts = $$("[data-mt5-accounts]");
     if (!hosts.length) return;
-    const all = (C.mt5Accounts || []).filter((m) => m.server && m.login && m.investorPassword);
+    const all = (C.mt5Accounts || []).filter((m) => m.enabled !== false && m.server && m.login && m.investorPassword);
     hosts.forEach((h) => {
       const key = h.dataset.mt5Accounts;
       const list = key ? all.filter((m) => m.key === key) : all;
@@ -225,6 +225,7 @@
     if (!host || !C.lab || !C.lab.projects) return;
     host.innerHTML = `<div class="lab-grid">` + C.lab.projects.map((p) => `
       <article class="lab-card${p.locked ? " locked" : ""}">
+        ${p.origin ? `<span class="lab-origin">${esc(p.origin)}</span>` : ""}
         <div class="lab-top">
           <span class="lab-stage">${esc(p.stage)}</span>
           ${p.locked ? `<span class="lab-lock" aria-label="Classified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>` : ""}
@@ -233,7 +234,7 @@
         <span class="lab-cat">${esc(p.category)}</span>
         <p class="lab-desc${p.locked ? " redacted" : ""}">${esc(p.desc)}</p>
         <div class="lab-progress"><i style="width:${Math.max(0, Math.min(100, +p.progress || 0))}%"></i></div>
-        <span class="lab-pct">${p.locked ? "Stage withheld" : (+p.progress || 0) + "% through our validation process"}</span>
+        <span class="lab-pct">${p.locked ? "Stage withheld" : (+p.progress || 0) + "% through validation"}</span>
       </article>`).join("") + `</div>`;
   }
 
@@ -426,7 +427,7 @@ Capital: ${d.capital}`;
       const rows = [];
       if (C.myfxbookUrl) rows.push(`<a class="btn btn-outline btn-sm" href="${esc(C.myfxbookUrl)}" target="_blank" rel="noopener">View on Myfxbook ↗</a>`);
       if (C.fxblueUrl) rows.push(`<a class="btn btn-outline btn-sm" href="${esc(C.fxblueUrl)}" target="_blank" rel="noopener">View on FX Blue ↗</a>`);
-      if ((C.mt5Accounts || []).some((m) => m.server && m.login && m.investorPassword)) rows.push(`<div data-mt5-accounts></div>`);
+      if ((C.mt5Accounts || []).some((m) => m.enabled !== false && m.server && m.login && m.investorPassword)) rows.push(`<div data-mt5-accounts></div>`);
       if (rows.length) { $("#verifyContent").innerHTML = rows.join(" "); v.style.display = ""; mt5Cards(); }
     }
   }

@@ -80,40 +80,42 @@ window.CFA_CONFIG = {
      to show a project as classified (name and description blurred out).
      Replace these with your real projects whenever you want.          */
   lab: {
-    headline: "The systems we haven't shown anyone yet.",
-    intro: "Everything we run today started as a project in this list. What sits here now is the next generation — models we are building, testing and stress-running on our own capital before a single client sees them. Some will reach the platform this year. Some will never leave the lab. That is exactly how it should be.",
     projects: [
       {
         codename: "Project Meridian",
-        category: "Multi-commodity arbitrage",
+        origin:   "Institutional desk model",
+        category: "Multi-commodity basis capture",
         stage:    "Live testing",
         progress: 70,
         locked:   false,
-        desc:     "Extends our gold basis engine across silver, oil and selected metals simultaneously, rotating capital to wherever the spread is widest that hour."
+        desc:     "The basis engine behind our gold strategy, widened to run silver, oil and selected metals at the same time — rotating capital to whichever spread is widest that hour. Commodity desks have run versions of this for decades. Almost no private investor has ever had access to one."
       },
       {
         codename: "Project Tidal",
-        category: "Market-neutral yield",
+        origin:   "Smart-money flow",
+        category: "Cross-venue funding capture",
         stage:    "In development",
         progress: 45,
         locked:   false,
-        desc:     "Captures perpetual-futures funding payments across multiple venues at once — a return stream that moves independently of everything else we run."
+        desc:     "Harvests the funding payments that leveraged traders pay each other across multiple exchanges simultaneously. Market-neutral, and uncorrelated to everything else on the platform — when one engine is flat, this one is still working."
       },
       {
         codename: "Project Sentinel",
-        category: "Adaptive risk layer",
+        origin:   "Risk-desk architecture",
+        category: "Adaptive protection layer",
         stage:    "Research",
         progress: 30,
         locked:   false,
-        desc:     "Not a strategy — a layer that sits above all of them, reading market regime in real time and scaling every position down before volatility arrives rather than after."
+        desc:     "Not a strategy — a layer that sits above every strategy we run, reading market regime in real time and cutting exposure before volatility arrives instead of after it. This is the part of a hedge fund nobody markets, and the part that keeps them alive."
       },
       {
         codename: "Classified",
+        origin:   "Undisclosed",
         category: "Undisclosed",
-        stage:    "Concept",
+        stage:    "Proving on our own capital",
         progress: 15,
         locked:   true,
-        desc:     "Details withheld while the model is proven on our own capital. Early-access clients are briefed first."
+        desc:     "We are not describing this one yet. It is running on our own money, and if it holds up it changes what this platform can offer. Clients on the early-access list are briefed before any public announcement."
       }
     ]
   },
@@ -127,25 +129,30 @@ window.CFA_CONFIG = {
   /* --- Verified track record (optional) --------------------------
      Fill these to show a "Verify it yourself" block on the Performance page.
      Only ever use an INVESTOR (read-only) password here — never the master password. */
+  /* --- Live accounts shown in the "verify before you trust" block ----
+     Only the two accounts already published are listed here. The extra
+     accounts you sent are held in PRIVATE-accounts.md (not committed to
+     the public repository) until you decide how you want them handled —
+     see that file for the options.                                    */
   mt5Accounts: [
     {
       key:      "arbitrage",
       strategy: "Gold Spot–Futures Arbitrage",
-      server:   "Newera Capital Market",         // TODO: confirm the exact MT5 server name as shown in the MT5 app
+      server:   "Newera Capital Market",
       login:    "510774",
-      investorPassword: "View@2026",             // investor (read-only) password
-      note:     "Live account · starting equity USD 10,000"
+      investorPassword: "View@2026",
+      note:     "Live · starting equity USD 10,000",
+      enabled:  true
     },
     {
       key:      "forex",
       strategy: "Forex Multi-Pair Algo",
-      server:   "Qbex",                          // TODO: confirm the exact MT5 server name as shown in the MT5 app
+      server:   "Qbex",
       login:    "900909625750",
-      investorPassword: "Apple@123",             // investor (read-only) password
-      note:     "Live account"
+      investorPassword: "Apple@123",
+      note:     "Live account",
+      enabled:  true
     }
-    /* Add more accounts here. ONLY investor (read-only) passwords — never master/trading passwords.
-       An account is shown on the Performance page only when all three of server/login/investorPassword are filled. */
   ],
   myfxbookUrl: "",                                  // optional verified-account link
   fxblueUrl:   "",                                  // optional verified-account link
