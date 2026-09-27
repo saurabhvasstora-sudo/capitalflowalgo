@@ -54,6 +54,20 @@ window.CFA_CONFIG = {
   ],
 
   platform: "MetaTrader 5 (MT5)",
+
+  /* --- MT5 downloads ------------------------------------------------
+     Shown wherever a page has <div data-mt5-download></div>. Desktop links
+     are MetaQuotes' own installers — the file downloads straight away,
+     the visitor never leaves this site. Phones must install from their
+     app store (Apple and Google allow no other way).                  */
+  mt5Icon: "assets/img/mt5-icon.png",
+  mt5Downloads: [
+    { os: "windows", label: "Windows",  note: "Installer · .exe",        url: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe", direct: true },
+    { os: "mac",     label: "macOS",    note: "Installer · .pkg (zip)",  url: "https://download.mql5.com/cdn/web/metaquotes.ltd/mt5/MetaTrader5.pkg.zip",    direct: true },
+    { os: "android", label: "Android",  note: "Google Play",             url: "https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5" },
+    { os: "ios",     label: "iPhone / iPad", note: "App Store",          url: "https://apps.apple.com/app/metatrader-5/id413251709" },
+    { os: "web",     label: "Web browser",   note: "No install needed",  url: "https://web.metatrader.app/terminal" }
+  ],
   logoMark: "assets/img/logo-mark.png",             // icon only (used in the header next to the wordmark)
   logoFull: "assets/img/logo.png",                  // full logo with wordmark (footer, about page)
 

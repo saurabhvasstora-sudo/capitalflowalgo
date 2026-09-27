@@ -625,6 +625,29 @@ table.compare tbody tr:hover td.us{background:rgba(217,178,74,.18)}
 .pb-text small{font-size:.84rem;color:var(--muted)}
 .pb-arrow{font-size:1.2rem;flex-shrink:0}
 
+/* ---------- MT5 download block ---------- */
+.mt5-dl{padding:28px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);max-width:900px;margin:0 auto}
+.mt5-dl-head{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.mt5-logo{width:64px;height:64px;border-radius:15px;flex-shrink:0;box-shadow:0 8px 22px rgba(0,0,0,.3)}
+.mt5-dl-head b{display:block;font-family:var(--font-head);font-size:1.35rem}
+.mt5-dl-head span{font-size:.88rem;color:var(--muted)}
+.mt5-dl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.mt5-dl-btn{
+  position:relative;display:flex;align-items:center;gap:14px;padding:16px 18px;
+  border-radius:var(--radius-sm);border:1px solid var(--border-strong);background:var(--tint);transition:.2s;
+}
+.mt5-dl-btn:hover{transform:translateY(-2px);border-color:var(--gold)}
+.mt5-dl-btn.mine{border-color:var(--gold);background:var(--gold-dim)}
+.mt5-os{width:26px;height:26px;flex-shrink:0;color:var(--gold)}
+.mt5-os svg{width:100%;height:100%}
+.mt5-dl-text{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.mt5-dl-text b{font-family:var(--font-head);font-size:1rem}
+.mt5-dl-text small{font-size:.82rem;color:var(--muted)}
+.mt5-dl-arrow{font-size:1.15rem;flex-shrink:0;color:var(--muted)}
+.mt5-dl-btn.mine .mt5-dl-arrow{color:var(--gold)}
+.mt5-mine{position:absolute;top:-9px;right:12px;padding:2px 8px;border-radius:99px;font-size:.68rem;font-weight:600;letter-spacing:.03em;background:var(--gold);color:#1A1400}
+@media(max-width:520px){.mt5-dl{padding:20px}.mt5-logo{width:52px;height:52px;border-radius:12px}}
+
 /* ---------- Check list ---------- */
 .broker-points{list-style:none;display:grid;gap:8px}
 .broker-points li{display:flex;gap:10px;font-size:.92rem;color:var(--muted)}

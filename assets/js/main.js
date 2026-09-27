@@ -59,6 +59,7 @@
       else if (href.startsWith("mailto:")) track("email_click");
       else if (href.includes("open-account")) track("open_account_click");
       else if (href.includes("qbexmarket.com") || href.includes("newera365.com")) track("broker_signup_click", { link_url: href });
+      else if (a.dataset.mt5Os) track("mt5_download_click", { os: a.dataset.mt5Os });
     });
     const rf = $("#regForm");
     if (rf) rf.addEventListener("submit", () => track("registration_submitted"));
@@ -250,6 +251,47 @@
         </div>`).join("") + `</div>
         <p class="small muted mt-2">How to check: install <strong>MetaTrader 5</strong> from the App Store / Google Play → <em>Login to an existing account</em> → search the server name → enter the login and investor password. Investor access is <strong>read-only</strong> — you can see every trade, balance and equity change, but nothing can be executed or withdrawn.</p>`;
     });
+  }
+
+  /* ---------- MT5 download block: <div data-mt5-download></div> ---------- */
+  const OS_ICONS = {
+    windows: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.1 10.4 4v7.1H3zM11.4 3.9 21 2.5v8.6h-9.6zM3 12.1h7.4v7.1L3 18.1zM11.4 12.1H21v8.6l-9.6-1.4z"/></svg>`,
+    mac: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.8 1.2 1.8 2.6 3.1 2.5 1.3-.1 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-4.2zM13.9 5c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>`,
+    android: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 9.4H6.5a.5.5 0 0 0-.5.5v7.6c0 .8.7 1.5 1.5 1.5h1v2.5a1.2 1.2 0 0 0 2.5 0V19h2v2.5a1.2 1.2 0 0 0 2.5 0V19h1c.8 0 1.5-.7 1.5-1.5V9.9a.5.5 0 0 0-.5-.5zM4 9.2a1.2 1.2 0 0 0-1.2 1.3v5.2a1.2 1.2 0 0 0 2.4 0v-5.2A1.2 1.2 0 0 0 4 9.2zm16 0a1.2 1.2 0 0 0-1.2 1.3v5.2a1.2 1.2 0 0 0 2.4 0v-5.2A1.2 1.2 0 0 0 20 9.2zM15.6 3.6l1.1-1.6a.3.3 0 0 0-.5-.3L15.1 3.3A6.6 6.6 0 0 0 12 2.6c-1.1 0-2.1.3-3.1.7L7.8 1.7a.3.3 0 0 0-.5.3l1.1 1.6A5.6 5.6 0 0 0 6 8.4h12a5.6 5.6 0 0 0-2.4-4.8zM9.5 6.4a.7.7 0 1 1 0-1.4.7.7 0 0 1 0 1.4zm5 0a.7.7 0 1 1 0-1.4.7.7 0 0 1 0 1.4z"/></svg>`,
+    ios: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg>`,
+    web: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>`
+  };
+  const detectOS = () => {
+    const ua = navigator.userAgent || "";
+    if (/android/i.test(ua)) return "android";
+    if (/iphone|ipad|ipod/i.test(ua) || (/macintosh/i.test(ua) && navigator.maxTouchPoints > 1)) return "ios";
+    if (/macintosh|mac os x/i.test(ua)) return "mac";
+    if (/windows/i.test(ua)) return "windows";
+    return "";
+  };
+  function mt5Download() {
+    const hosts = $$("[data-mt5-download]");
+    const list = C.mt5Downloads || [];
+    if (!hosts.length || !list.length) return;
+    const mine = detectOS();
+    const icon = C.mt5Icon ? `<img class="mt5-logo" src="${esc(C.mt5Icon)}" alt="MetaTrader 5" width="64" height="64">` : "";
+    const html = `
+      <div class="mt5-dl">
+        <div class="mt5-dl-head">
+          ${icon}
+          <div><b>MetaTrader 5</b><span>Free trading platform by MetaQuotes · Official installers</span></div>
+        </div>
+        <div class="mt5-dl-grid">` + list.map((d) => `
+          <a class="mt5-dl-btn${d.os === mine ? " mine" : ""}" href="${esc(d.url)}" ${d.direct ? "download" : `target="_blank" rel="noopener"`} data-mt5-os="${esc(d.os)}">
+            <span class="mt5-os">${OS_ICONS[d.os] || OS_ICONS.web}</span>
+            <span class="mt5-dl-text"><b>${esc(d.label)}</b><small>${esc(d.note || "")}</small></span>
+            ${d.os === mine ? `<span class="mt5-mine">Your device</span>` : ""}
+            <span class="mt5-dl-arrow" aria-hidden="true">${d.direct ? "↓" : "↗"}</span>
+          </a>`).join("") + `
+        </div>
+        <p class="small muted mt-2">After installing: open MT5 → <em>File → Login to Trade Account</em> (desktop) or <em>Settings → New account → Login to an existing account</em> (phone) → search your broker's server name → enter the login and password the broker emailed you.</p>
+      </div>`;
+    hosts.forEach((h) => { h.innerHTML = html; });
   }
 
   /* ---------- partners: <div data-partners></div> ---------- */
@@ -577,6 +619,6 @@ Capital: ${d.capital}`;
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    buildHeader(); buildFooter(); bindConfig(); initTheme(); analytics(); reveal(); contactForm(); chartDefaults(); heroChart(); performancePage(); calculator(); tierTable(); labSection(); partnersSection(); strategyStats(); mt5Cards(); regForm(); themeCharts();
+    buildHeader(); buildFooter(); bindConfig(); initTheme(); analytics(); reveal(); contactForm(); chartDefaults(); heroChart(); performancePage(); calculator(); tierTable(); labSection(); partnersSection(); strategyStats(); mt5Cards(); mt5Download(); regForm(); themeCharts();
   });
 })();
