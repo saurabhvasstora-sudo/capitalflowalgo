@@ -29,20 +29,14 @@
 <body>
 <header id="site-header"></header>
 
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span><b>EUR/USD</b> 1.0842 <i class="up">▲ 0.12%</i></span><span><b>GBP/USD</b> 1.2716 <i class="up">▲ 0.08%</i></span><span><b>USD/JPY</b> 149.32 <i class="dn">▼ 0.21%</i></span><span><b>AUD/USD</b> 0.6588 <i class="up">▲ 0.15%</i></span><span><b>XAU/USD</b> 2,412.10 <i class="up">▲ 0.34%</i></span><span><b>GOLD SPOT</b> 2,412.10 <i class="up">▲ 0.34%</i></span><span><b>GOLD FUT</b> 2,447.30 <i class="up">basis +1.46%</i></span><span><b>XAG/USD</b> 28.64 <i class="dn">▼ 0.22%</i></span><span><b>USD/CAD</b> 1.3588 <i class="up">▲ 0.14%</i></span><span><b>USD/CHF</b> 0.8813 <i class="dn">▼ 0.05%</i></span><span><b>NZD/USD</b> 0.6021 <i class="up">▲ 0.19%</i></span>
-    <span><b>EUR/USD</b> 1.0842 <i class="up">▲ 0.12%</i></span><span><b>GBP/USD</b> 1.2716 <i class="up">▲ 0.08%</i></span><span><b>USD/JPY</b> 149.32 <i class="dn">▼ 0.21%</i></span><span><b>AUD/USD</b> 0.6588 <i class="up">▲ 0.15%</i></span><span><b>XAU/USD</b> 2,412.10 <i class="up">▲ 0.34%</i></span><span><b>GOLD SPOT</b> 2,412.10 <i class="up">▲ 0.34%</i></span><span><b>GOLD FUT</b> 2,447.30 <i class="up">basis +1.46%</i></span><span><b>XAG/USD</b> 28.64 <i class="dn">▼ 0.22%</i></span><span><b>USD/CAD</b> 1.3588 <i class="up">▲ 0.14%</i></span><span><b>USD/CHF</b> 0.8813 <i class="dn">▼ 0.05%</i></span><span><b>NZD/USD</b> 0.6021 <i class="up">▲ 0.19%</i></span>
-  </div>
-</div>
 
 <!-- ================= HERO ================= -->
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="badge"><i class="dot"></i> Algorithms trading live right now</span>
+      <a class="badge" href="#verify"><i class="dot"></i> Our live accounts are public — verify them in MT5</a>
       <h1 class="mt-3">Institutional-grade trading algorithms, <span class="accent">running in your own account.</span></h1>
-      <p class="lead">You keep your money in your own trading account. We connect a proven, fully automatic trading program to it. It trades for you around the clock, and you watch the profit grow on your phone. No experience needed.</p>
+      <p class="lead">You keep your money in your own trading account. We connect a fully automatic trading program to it with trading-only access. It trades around the clock, and you see every trade on your own phone as it happens. No experience needed.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="open-account.html">Open Your Account</a>
         <a class="btn btn-outline" data-href="wa" href="#" target="_blank" rel="noopener">Talk to us first</a>
@@ -55,14 +49,15 @@
       </ul>
     </div>
 
-    <div class="terminal reveal">
-      <div class="terminal-bar"><i></i><i></i><i></i><span>LIVE PERFORMANCE MONITOR · as of <b id="heroAsOf">—</b></span></div>
+    <div class="terminal reveal" id="verify">
+      <div class="terminal-bar"><i></i><i></i><i></i><span>READ-ONLY LIVE ACCOUNTS · MetaTrader 5</span></div>
       <div class="terminal-body">
-        <div class="term-row"><span class="k">Forex Multi-Pair · avg / month</span><span class="v blue" id="heroFx">—</span></div>
-        <div class="term-row"><span class="k">Gold Arbitrage · avg / month</span><span class="v gold" id="heroArb">—</span></div>
-        <div class="term-row"><span class="k">Track record</span><span class="v green" id="heroMonths">—</span></div>
-        <div class="term-chart"><canvas id="heroChart" aria-label="Growth of $100 across both strategies"></canvas></div>
-        <p class="small mt-2" id="heroIllustrative" style="display:none;color:var(--dim)">Illustrative figures shown until audited data is published. <a href="performance.html" class="gold">See full track record →</a></p>
+        <p class="verify-intro">Don't take our word for it. Log in to our own live accounts and watch every trade, win and loss — nothing edited.</p>
+        <div class="verify-actions">
+          <a class="btn btn-primary btn-sm" href="open-account.html#download-mt5">Get MT5 (free)</a>
+          <a class="btn btn-outline btn-sm" href="performance.html#live">Full track record →</a>
+        </div>
+        <p class="small mt-2" style="color:var(--dim)">Investor passwords are read-only: they show everything and can change nothing.</p>
       </div>
     </div>
   </div>
@@ -116,7 +111,7 @@
       <div class="step"><h3>You deposit into <em>your</em> account</h3><p>You open a trading account in your own name with a regulated broker and put your money there. Not with us — with the broker. Only you can take it out. <a href="open-account.html" class="gold">Start here →</a></p></div>
       <div class="step"><h3>We switch on the algorithm</h3><p>We connect our trading program to your account. It has permission to trade, and nothing else. Takes us a few minutes, takes you zero effort.</p></div>
       <div class="step"><h3>It trades for you, 24/5</h3><p>The program watches the markets every second and makes thousands of small, calculated trades. No emotions, no sleep, no guessing.</p></div>
-      <div class="step"><h3>You watch the profit grow</h3><p>Profit lands in your account balance. Check it any time on the free MT5 phone app. Withdraw whenever you want, or leave it in to grow faster.</p></div>
+      <div class="step"><h3>You see every trade</h3><p>Every trade, profit and loss shows in your own account in real time on the free MT5 app. Withdraw whenever you want, or leave it in to grow faster.</p></div>
     </div>
     <div class="grid grid-2 mt-4 reveal" style="align-items:stretch">
       <div class="calc-big">
